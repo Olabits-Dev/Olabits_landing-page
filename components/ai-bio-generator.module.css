@@ -1,0 +1,53 @@
+.panel {
+  border-radius: 28px;
+  padding: 1.6rem;
+  background: linear-gradient(180deg, rgba(20, 184, 166, 0.14), rgba(255, 255, 255, 0.88));
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  display: grid;
+  gap: 1rem;
+}
+
+.copy h3 {
+  margin: 0.2rem 0 0.5rem;
+}
+
+.copy p {
+  margin: 0;
+  line-height: 1.7;
+  color: #475569;
+}
+
+.kicker {
+  display: inline-flex;
+  width: fit-content;
+  padding: 0.4rem 0.75rem;
+  border-radius: 999px;
+  background: #ccfbf1;
+  color: #115e59;
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+.button {
+  width: fit-content;
+  border: 0;
+  border-radius: 999px;
+  padding: 0.9rem 1.2rem;
+  font: inherit;
+  font-weight: 800;
+  color: white;
+  background: linear-gradient(135deg, #0f766e, #14b8a6);
+  cursor: pointer;
+}
+
+.button:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}
+
+.bio {
+  margin: 0;
+  line-height: 1.8;
+  color: #0f172a;
+  font-weight: 600;
+}

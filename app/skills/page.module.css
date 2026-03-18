@@ -1,0 +1,29 @@
+.page {
+  width: min(1120px, 92%);
+  margin: 0 auto;
+  padding: 4rem 0 2rem;
+}
+
+.intro h1 {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 3.4rem);
+}
+
+.intro p {
+  color: #475569;
+  line-height: 1.8;
+  max-width: 70ch;
+}
+
+.grid {
+  margin-top: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+@media (max-width: 960px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

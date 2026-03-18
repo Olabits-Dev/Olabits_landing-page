@@ -1,0 +1,26 @@
+.page {
+  width: min(760px, 92%);
+  margin: 0 auto;
+  padding: 5rem 0;
+  text-align: center;
+}
+
+.page h1 {
+  margin: 0;
+  font-size: clamp(2.5rem, 5vw, 4.4rem);
+}
+
+.page p {
+  color: #475569;
+  line-height: 1.8;
+}
+
+.link {
+  display: inline-flex;
+  margin-top: 1rem;
+  border-radius: 999px;
+  padding: 0.95rem 1.3rem;
+  background: linear-gradient(135deg, #0f766e, #14b8a6);
+  color: white;
+  font-weight: 800;
+}

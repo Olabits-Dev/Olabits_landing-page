@@ -1,0 +1,50 @@
+.form {
+  display: grid;
+  gap: 1rem;
+}
+
+.field {
+  display: grid;
+  gap: 0.45rem;
+  color: #0f172a;
+  font-weight: 700;
+}
+
+.field input,
+.field textarea {
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  border-radius: 18px;
+  padding: 0.95rem 1rem;
+  font: inherit;
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.field input:focus,
+.field textarea:focus {
+  outline: 2px solid rgba(20, 184, 166, 0.25);
+  border-color: #14b8a6;
+}
+
+.button {
+  width: fit-content;
+  border: 0;
+  border-radius: 999px;
+  padding: 0.9rem 1.3rem;
+  font: inherit;
+  font-weight: 800;
+  color: white;
+  background: linear-gradient(135deg, #0f766e, #14b8a6);
+  cursor: pointer;
+}
+
+.success {
+  margin: 0;
+  color: #0f766e;
+  font-weight: 800;
+}
+
+.error {
+  margin: 0;
+  color: #b91c1c;
+  font-weight: 800;
+}

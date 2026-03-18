@@ -1,0 +1,38 @@
+.page {
+  width: min(1120px, 92%);
+  margin: 0 auto;
+  padding: 4rem 0 2rem;
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 1.3rem;
+}
+
+.copy,
+.formPanel {
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 28px;
+  padding: 1.6rem;
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.06);
+}
+
+.copy h1 {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 3.4rem);
+}
+
+.copy p,
+.copy li {
+  color: #475569;
+  line-height: 1.8;
+}
+
+.copy ul {
+  padding-left: 1.2rem;
+}
+
+@media (max-width: 860px) {
+  .page {
+    grid-template-columns: 1fr;
+  }
+}
