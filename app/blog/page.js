@@ -12,8 +12,8 @@ export default function BlogPage() {
       <section className={styles.intro}>
         <h1>Blog Posts</h1>
         <p>
-          Here are some sample posts showing title, date, category, summary, and a route to the
-          full article page.
+          Welcome to my blog. This is where I share what I am learning, how I build, and a few
+          helpful ideas from my journey in tech.
         </p>
       </section>
 

@@ -12,8 +12,8 @@ export default function SkillsPage() {
       <section className={styles.intro}>
         <h1>Skills</h1>
         <p>
-          This page uses a reusable skill card component to show technical skills and experience
-          levels in a clean layout.
+          Here is a look at the skills I am building and using as I grow in frontend, backend,
+          and full-stack development.
         </p>
       </section>
 
