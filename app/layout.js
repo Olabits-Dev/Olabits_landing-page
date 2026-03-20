@@ -3,8 +3,9 @@ import Footer from "../components/footer";
 import Navbar from "../components/navbar";
 
 export const metadata = {
-  title: "Olabits Blog Project",
-  description: "A personal blog project built with Next.js, CSS Modules, dynamic routes, and API features.",
+  title: "Olabits Dev Portfolio",
+  description:
+    "A personal portfolio and blog built with Next.js, CSS Modules, dynamic routes, and API features.",
 };
 
 export default function RootLayout({ children }) {

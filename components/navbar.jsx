@@ -3,6 +3,7 @@ import styles from "./navbar.module.css";
 
 const links = [
   { href: "/", label: "Home" },
+  { href: "/portfolio", label: "Portfolio" },
   { href: "/about", label: "About" },
   { href: "/blog", label: "Blog" },
   { href: "/skills", label: "Skills" },
@@ -15,7 +16,7 @@ export default function Navbar() {
       <nav className={styles.nav}>
         <Link href="/" className={styles.brand}>
           <span className={styles.brandDot} />
-          <span>Olabits Blog</span>
+          <span>Olabits Dev</span>
         </Link>
 
         <div className={styles.links}>
