@@ -1,7 +1,7 @@
 .footer {
   margin-top: 4rem;
-  border-top: 1px solid rgba(15, 23, 42, 0.08);
-  background: rgba(255, 255, 255, 0.72);
+  border-top: 1px solid var(--border-color);
+  background: var(--footer-bg);
 }
 
 .inner {
@@ -11,7 +11,7 @@
   display: flex;
   justify-content: space-between;
   gap: 1rem;
-  color: #64748b;
+  color: var(--text-subtle);
   font-weight: 600;
 }
 

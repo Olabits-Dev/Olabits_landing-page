@@ -1,5 +1,5 @@
 .counter {
   margin: 0;
-  color: #64748b;
+  color: var(--text-subtle);
   font-weight: 800;
 }

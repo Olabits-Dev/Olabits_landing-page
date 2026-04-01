@@ -1,17 +1,17 @@
 .card {
   border-radius: 28px;
   padding: 1.5rem;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(240, 253, 250, 0.9));
-  border: 1px solid rgba(15, 23, 42, 0.08);
-  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.08);
+  background: var(--blog-card-gradient);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-medium);
 }
 
 .category {
   display: inline-flex;
   padding: 0.45rem 0.8rem;
   border-radius: 999px;
-  background: #fef3c7;
-  color: #92400e;
+  background: var(--warning-soft);
+  color: var(--warning-text);
   font-size: 0.78rem;
   font-weight: 800;
 }
@@ -23,18 +23,18 @@
 
 .meta {
   margin: 0;
-  color: #64748b;
+  color: var(--text-subtle);
   font-size: 0.95rem;
   font-weight: 700;
 }
 
 .summary {
   margin: 1rem 0;
-  color: #475569;
+  color: var(--text-muted);
   line-height: 1.7;
 }
 
 .link {
-  color: #0f766e;
+  color: var(--accent-text);
   font-weight: 800;
 }

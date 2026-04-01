@@ -6,23 +6,28 @@
 .field {
   display: grid;
   gap: 0.45rem;
-  color: #0f172a;
+  color: var(--text-primary);
   font-weight: 700;
 }
 
 .field input,
 .field textarea {
-  border: 1px solid rgba(15, 23, 42, 0.12);
+  border: 1px solid var(--border-strong);
   border-radius: 18px;
   padding: 0.95rem 1rem;
   font: inherit;
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--surface-strong);
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: var(--text-subtle);
 }
 
 .field input:focus,
 .field textarea:focus {
-  outline: 2px solid rgba(20, 184, 166, 0.25);
-  border-color: #14b8a6;
+  outline: 2px solid var(--focus-ring);
+  border-color: var(--accent-end);
 }
 
 .button {
@@ -32,19 +37,19 @@
   padding: 0.9rem 1.3rem;
   font: inherit;
   font-weight: 800;
-  color: white;
-  background: linear-gradient(135deg, #0f766e, #14b8a6);
+  color: var(--text-inverse);
+  background: linear-gradient(135deg, var(--accent-start), var(--accent-end));
   cursor: pointer;
 }
 
 .success {
   margin: 0;
-  color: #0f766e;
+  color: var(--success-text);
   font-weight: 800;
 }
 
 .error {
   margin: 0;
-  color: #b91c1c;
+  color: var(--error-text);
   font-weight: 800;
 }

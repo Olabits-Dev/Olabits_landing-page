@@ -11,7 +11,7 @@
 }
 
 .page p {
-  color: #475569;
+  color: var(--text-muted);
   line-height: 1.8;
 }
 
@@ -20,7 +20,7 @@
   margin-top: 1rem;
   border-radius: 999px;
   padding: 0.95rem 1.3rem;
-  background: linear-gradient(135deg, #0f766e, #14b8a6);
-  color: white;
+  background: linear-gradient(135deg, var(--accent-start), var(--accent-end));
+  color: var(--text-inverse);
   font-weight: 800;
 }

@@ -10,7 +10,7 @@
 }
 
 .intro p {
-  color: #475569;
+  color: var(--text-muted);
   line-height: 1.8;
   max-width: 70ch;
 }

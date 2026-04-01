@@ -1,5 +1,6 @@
 import Link from "next/link";
 import styles from "./navbar.module.css";
+import ThemeToggle from "./theme-toggle";
 
 const links = [
   { href: "/", label: "Home" },
@@ -19,12 +20,16 @@ export default function Navbar() {
           <span>Olabits Dev</span>
         </Link>
 
-        <div className={styles.links}>
-          {links.map((link) => (
-            <Link key={link.href} href={link.href} className={styles.link}>
-              {link.label}
-            </Link>
-          ))}
+        <div className={styles.actions}>
+          <div className={styles.links}>
+            {links.map((link) => (
+              <Link key={link.href} href={link.href} className={styles.link}>
+                {link.label}
+              </Link>
+            ))}
+          </div>
+
+          <ThemeToggle />
         </div>
       </nav>
     </header>
