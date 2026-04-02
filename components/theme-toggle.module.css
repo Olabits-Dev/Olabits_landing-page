@@ -2,60 +2,74 @@
   display: inline-flex;
   align-items: center;
   gap: 0.7rem;
-  border: 1px solid var(--border-strong);
-  border-radius: 999px;
-  padding: 0.45rem 0.7rem 0.45rem 0.5rem;
-  background: var(--surface-soft);
-  color: var(--text-primary);
-  font-weight: 700;
-  cursor: pointer;
-  transition:
-    transform 0.2s ease,
-    border-color 0.2s ease,
-    background 0.2s ease;
-}
-
-.toggle:hover {
-  transform: translateY(-1px);
-  border-color: var(--accent-end);
-}
-
-.toggle:focus-visible {
-  outline: 2px solid var(--focus-ring);
-  outline-offset: 3px;
-}
-
-.track {
-  position: relative;
-  width: 2.9rem;
-  height: 1.6rem;
-  border-radius: 999px;
-  background: linear-gradient(135deg, var(--accent-start), var(--accent-end));
-}
-
-.thumb {
-  position: absolute;
-  top: 0.18rem;
-  left: 0.18rem;
-  width: 1.24rem;
-  height: 1.24rem;
-  border-radius: 999px;
-  background: white;
-  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.2);
-  transition: transform 0.24s ease;
-}
-
-.thumbDark {
-  transform: translateX(1.28rem);
 }
 
 .label {
-  white-space: nowrap;
+  color: var(--text-muted);
   font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.group {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  padding: 0.25rem;
+  background: var(--surface-soft);
+  box-shadow: var(--shadow-soft);
+}
+
+.option {
+  border: 0;
+  border-radius: 999px;
+  padding: 0.45rem 0.9rem;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.option:hover {
+  transform: translateY(-1px);
+  color: var(--text-primary);
+}
+
+.option:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+.optionActive {
+  background: linear-gradient(135deg, var(--accent-start), var(--accent-end));
+  color: var(--text-inverse);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.18);
 }
 
 @media (max-width: 720px) {
+  .toggle {
+    width: 100%;
+    justify-content: space-between;
+  }
+
   .label {
     font-size: 0.9rem;
+  }
+
+  .group {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .option {
+    flex: 1;
+    text-align: center;
+    padding-inline: 0.75rem;
   }
 }
