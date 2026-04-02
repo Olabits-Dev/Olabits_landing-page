@@ -44,6 +44,21 @@
 
   --header-bg: rgba(247, 250, 252, 0.88);
   --footer-bg: rgba(255, 255, 255, 0.72);
+  --heading-color: #18213a;
+  --heading-weight: 500;
+  --heading-letter-spacing: -0.045em;
+  --heading-line-height: 0.98;
+  --heading-medium-letter-spacing: -0.035em;
+  --heading-medium-line-height: 1.02;
+  --heading-small-letter-spacing: -0.025em;
+  --heading-small-line-height: 1.08;
+  --intro-text-size: 0.98rem;
+  --intro-line-height: 1.75;
+  --cta-padding-block: 0.78rem;
+  --cta-padding-inline: 1.08rem;
+  --cta-font-size: 0.95rem;
+  --cta-font-weight: 750;
+  --cta-min-height: 2.65rem;
 
   --card-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(217, 249, 246, 0.88));
   --portfolio-panel-gradient: linear-gradient(
@@ -76,6 +91,7 @@
   --text-muted: #94a3b8;
   --text-subtle: #94a3b8;
   --text-inverse: #f8fafc;
+  --heading-color: #eef2ff;
 
   --surface-base: rgba(15, 23, 42, 0.74);
   --surface-strong: rgba(15, 23, 42, 0.86);
@@ -137,6 +153,7 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
+  overflow-x: hidden;
   color: var(--text-primary);
   font-family: Georgia, "Times New Roman", serif;
   background:
@@ -160,7 +177,26 @@ textarea {
   color: inherit;
 }
 
+img,
+video,
+canvas {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
 ::selection {
   background: rgba(var(--accent-soft-rgb), 0.28);
   color: var(--text-primary);
+}
+
+@media (max-width: 640px) {
+  :root {
+    --intro-text-size: 0.92rem;
+    --intro-line-height: 1.72;
+    --cta-padding-block: 0.72rem;
+    --cta-padding-inline: 0.98rem;
+    --cta-font-size: 0.91rem;
+    --cta-min-height: 2.5rem;
+  }
 }

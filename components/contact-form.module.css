@@ -34,9 +34,11 @@
   width: fit-content;
   border: 0;
   border-radius: 999px;
-  padding: 0.9rem 1.3rem;
+  min-height: var(--cta-min-height);
+  padding: var(--cta-padding-block) var(--cta-padding-inline);
+  font-size: var(--cta-font-size);
   font: inherit;
-  font-weight: 800;
+  font-weight: var(--cta-font-weight);
   color: var(--text-inverse);
   background: linear-gradient(135deg, var(--accent-start), var(--accent-end));
   cursor: pointer;
@@ -52,4 +54,10 @@
   margin: 0;
   color: var(--error-text);
   font-weight: 800;
+}
+
+@media (max-width: 640px) {
+  .button {
+    width: 100%;
+  }
 }

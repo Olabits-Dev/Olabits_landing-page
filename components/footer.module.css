@@ -18,5 +18,6 @@
 @media (max-width: 720px) {
   .inner {
     flex-direction: column;
+    text-align: center;
   }
 }

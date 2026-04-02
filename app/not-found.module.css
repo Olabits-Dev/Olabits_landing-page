@@ -8,19 +8,38 @@
 .page h1 {
   margin: 0;
   font-size: clamp(2.5rem, 5vw, 4.4rem);
+  color: var(--heading-color);
+  font-weight: var(--heading-weight);
+  line-height: var(--heading-line-height);
+  letter-spacing: var(--heading-letter-spacing);
 }
 
 .page p {
   color: var(--text-muted);
-  line-height: 1.8;
+  line-height: var(--intro-line-height);
+  font-size: var(--intro-text-size);
 }
 
 .link {
   display: inline-flex;
   margin-top: 1rem;
   border-radius: 999px;
-  padding: 0.95rem 1.3rem;
+  min-height: var(--cta-min-height);
+  padding: var(--cta-padding-block) var(--cta-padding-inline);
+  font-size: var(--cta-font-size);
   background: linear-gradient(135deg, var(--accent-start), var(--accent-end));
   color: var(--text-inverse);
-  font-weight: 800;
+  font-weight: var(--cta-font-weight);
+}
+
+@media (max-width: 640px) {
+  .page {
+    width: min(760px, 94%);
+    padding: 3.5rem 0 2rem;
+  }
+
+  .link {
+    width: 100%;
+    justify-content: center;
+  }
 }

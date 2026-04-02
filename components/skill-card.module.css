@@ -16,6 +16,10 @@
 .top h3 {
   margin: 0;
   font-size: 1.1rem;
+  color: var(--heading-color);
+  font-weight: var(--heading-weight);
+  line-height: var(--heading-small-line-height);
+  letter-spacing: var(--heading-small-letter-spacing);
 }
 
 .level {
@@ -34,4 +38,20 @@
   margin: 1rem 0 0;
   color: var(--text-muted);
   line-height: 1.7;
+}
+
+@media (max-width: 560px) {
+  .card {
+    padding: 1.2rem;
+    border-radius: 22px;
+  }
+
+  .top {
+    display: grid;
+    gap: 0.7rem;
+  }
+
+  .level {
+    justify-self: start;
+  }
 }

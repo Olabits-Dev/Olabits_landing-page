@@ -53,7 +53,54 @@ function applyThemeMode(themeMode) {
   return resolvedTheme;
 }
 
-export default function ThemeToggle() {
+function getNextThemeMode(themeMode) {
+  const currentIndex = THEME_OPTIONS.indexOf(themeMode);
+  const nextIndex = currentIndex === -1 ? 0 : (currentIndex + 1) % THEME_OPTIONS.length;
+  return THEME_OPTIONS[nextIndex];
+}
+
+function SunIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" className={styles.icon}>
+      <circle cx="12" cy="12" r="4.2" />
+      <path d="M12 2.75v2.1" />
+      <path d="M12 19.15v2.1" />
+      <path d="m5.46 5.46 1.48 1.48" />
+      <path d="m17.06 17.06 1.48 1.48" />
+      <path d="M2.75 12h2.1" />
+      <path d="M19.15 12h2.1" />
+      <path d="m5.46 18.54 1.48-1.48" />
+      <path d="m17.06 6.94 1.48-1.48" />
+    </svg>
+  );
+}
+
+function MoonIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" className={styles.icon}>
+      <path d="M14.2 3.75a8.55 8.55 0 1 0 6.05 14.6 7.3 7.3 0 0 1-6.9-9.25 7.3 7.3 0 0 1 .85-5.35Z" />
+    </svg>
+  );
+}
+
+function AutoIcon({ resolvedTheme }) {
+  return (
+    <span className={styles.autoIcon}>
+      {resolvedTheme === "dark" ? <MoonIcon /> : <SunIcon />}
+      <span className={styles.autoPulse} />
+    </span>
+  );
+}
+
+function ThemeIcon({ themeMode, resolvedTheme }) {
+  if (themeMode === "auto") {
+    return <AutoIcon resolvedTheme={resolvedTheme} />;
+  }
+
+  return themeMode === "dark" ? <MoonIcon /> : <SunIcon />;
+}
+
+export default function ThemeToggle({ className = "" }) {
   const [themeMode, setThemeMode] = useState(DEFAULT_THEME);
   const [resolvedTheme, setResolvedTheme] = useState("light");
 
@@ -108,32 +155,23 @@ export default function ThemeToggle() {
     window.localStorage.setItem(THEME_STORAGE_KEY, nextThemeMode);
   }
 
+  const nextThemeMode = getNextThemeMode(themeMode);
+  const title =
+    themeMode === "auto"
+      ? `Theme: Auto, currently ${resolvedTheme}. Click to switch to ${nextThemeMode}.`
+      : `Theme: ${themeMode}. Click to switch to ${nextThemeMode}.`;
+
   return (
-    <div className={styles.toggle}>
-      <span className={styles.label}>Theme</span>
-
-      <div className={styles.group} role="group" aria-label="Color theme">
-        {THEME_OPTIONS.map((option) => {
-          const isActive = themeMode === option;
-          const title =
-            option === "auto"
-              ? `Auto mode follows the device theme. Current: ${resolvedTheme}`
-              : `Switch to ${option} mode`;
-
-          return (
-            <button
-              key={option}
-              type="button"
-              className={`${styles.option} ${isActive ? styles.optionActive : ""}`}
-              onClick={() => handleThemeChange(option)}
-              aria-pressed={isActive}
-              title={title}
-            >
-              {option.charAt(0).toUpperCase() + option.slice(1)}
-            </button>
-          );
-        })}
-      </div>
-    </div>
+    <button
+      type="button"
+      className={`${styles.toggle} ${className}`.trim()}
+      onClick={() => handleThemeChange(nextThemeMode)}
+      title={title}
+      aria-label={title}
+      data-mode={themeMode}
+    >
+      <ThemeIcon themeMode={themeMode} resolvedTheme={resolvedTheme} />
+      <span className={styles.srOnly}>{title}</span>
+    </button>
   );
 }

@@ -31,16 +31,18 @@
 .copy h1 {
   margin: 0;
   font-size: clamp(2.2rem, 4vw, 4rem);
-  line-height: 1.02;
-  letter-spacing: -0.04em;
+  color: var(--heading-color);
+  font-weight: var(--heading-weight);
+  line-height: var(--heading-line-height);
+  letter-spacing: var(--heading-letter-spacing);
 }
 
 .lead {
   margin: 0;
   max-width: 62ch;
   color: var(--text-muted);
-  line-height: 1.8;
-  font-size: 1.04rem;
+  line-height: var(--intro-line-height);
+  font-size: var(--intro-text-size);
 }
 
 .actions {
@@ -56,8 +58,10 @@
   align-items: center;
   justify-content: center;
   border-radius: 999px;
-  padding: 0.95rem 1.3rem;
-  font-weight: 800;
+  min-height: var(--cta-min-height);
+  padding: var(--cta-padding-block) var(--cta-padding-inline);
+  font-size: var(--cta-font-size);
+  font-weight: var(--cta-font-weight);
 }
 
 .button {
@@ -84,6 +88,10 @@
 .panel h2,
 .sectionHeading h2 {
   margin: 0;
+  color: var(--heading-color);
+  font-weight: var(--heading-weight);
+  line-height: var(--heading-medium-line-height);
+  letter-spacing: var(--heading-medium-letter-spacing);
 }
 
 .stats {
@@ -131,5 +139,32 @@
   .hero,
   .grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .page {
+    width: min(1120px, 94%);
+    padding: 3rem 0 1.5rem;
+    gap: 1.5rem;
+  }
+
+  .actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .button,
+  .ghostButton {
+    width: 100%;
+  }
+
+  .panel {
+    padding: 1.2rem;
+    border-radius: 24px;
+  }
+
+  .statCard {
+    border-radius: 18px;
   }
 }

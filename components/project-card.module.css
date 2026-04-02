@@ -57,6 +57,10 @@
 .card h3 {
   margin: 0;
   font-size: 1.3rem;
+  color: var(--heading-color);
+  font-weight: var(--heading-weight);
+  line-height: var(--heading-small-line-height);
+  letter-spacing: var(--heading-small-letter-spacing);
 }
 
 .summary {
@@ -111,8 +115,10 @@
   align-items: center;
   justify-content: center;
   border-radius: 999px;
-  padding: 0.9rem 1.2rem;
-  font-weight: 800;
+  min-height: var(--cta-min-height);
+  padding: var(--cta-padding-block) var(--cta-padding-inline);
+  font-size: var(--cta-font-size);
+  font-weight: var(--cta-font-weight);
 }
 
 .link {
@@ -135,5 +141,26 @@
 
   .top {
     gap: 0.8rem;
+  }
+
+  .status {
+    justify-self: start;
+  }
+}
+
+@media (max-width: 560px) {
+  .card {
+    padding: 1.2rem;
+    border-radius: 24px;
+  }
+
+  .links {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .link,
+  .ghostLink {
+    width: 100%;
   }
 }
