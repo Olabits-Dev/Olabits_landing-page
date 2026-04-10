@@ -1,11 +1,32 @@
 .page {
-  width: min(860px, 92%);
+  width: min(920px, 94%);
   margin: 0 auto;
-  padding: 4rem 0 2rem;
+  padding: 2.8rem 0 2.6rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.hero,
+.article {
+  border: 1px solid var(--border-color);
+  border-radius: 30px;
+  box-shadow: var(--shadow-medium);
+}
+
+.hero {
+  display: grid;
+  gap: 0.9rem;
+  padding: 1.45rem;
+  background:
+    radial-gradient(circle at top right, rgba(var(--accent-soft-rgb), 0.22), transparent 28%),
+    linear-gradient(180deg, var(--surface-strong), var(--surface-panel));
 }
 
 .category {
   display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  justify-content: center;
   padding: 0.45rem 0.8rem;
   border-radius: 999px;
   background: var(--accent-soft);
@@ -15,12 +36,20 @@
 }
 
 .title {
-  margin: 1rem 0 0.7rem;
-  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  margin: 0;
+  font-size: clamp(2.5rem, 6vw, 4.8rem);
   color: var(--heading-color);
   font-weight: var(--heading-weight);
-  line-height: var(--heading-line-height);
+  line-height: 0.93;
   letter-spacing: var(--heading-letter-spacing);
+}
+
+.summary {
+  margin: 0;
+  color: var(--text-muted);
+  line-height: var(--intro-line-height);
+  font-size: 1.02rem;
+  max-width: 64ch;
 }
 
 .metaRow {
@@ -28,7 +57,7 @@
   justify-content: space-between;
   gap: 1rem;
   flex-wrap: wrap;
-  margin-bottom: 1.8rem;
+  align-items: center;
 }
 
 .date {
@@ -38,33 +67,38 @@
 }
 
 .article {
-  border: 1px solid var(--border-color);
-  border-radius: 30px;
-  padding: 1.7rem;
+  padding: 1.8rem;
   background: var(--surface-elevated);
-  box-shadow: var(--shadow-soft);
 }
 
 .article p {
   margin: 0 0 1rem;
   color: var(--text-secondary);
-  line-height: 1.85;
+  line-height: 1.88;
+}
+
+.article p:last-child {
+  margin-bottom: 0;
 }
 
 @media (max-width: 640px) {
   .page {
-    width: min(860px, 94%);
-    padding: 3rem 0 1.5rem;
+    width: min(920px, 95%);
+    padding-top: 2rem;
+  }
+
+  .hero,
+  .article {
+    padding: 1.15rem;
+    border-radius: 24px;
+  }
+
+  .title {
+    font-size: clamp(2rem, 11vw, 3.2rem);
   }
 
   .metaRow {
     flex-direction: column;
     align-items: flex-start;
-    margin-bottom: 1.4rem;
-  }
-
-  .article {
-    padding: 1.2rem;
-    border-radius: 24px;
   }
 }

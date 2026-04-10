@@ -56,7 +56,7 @@
 
 .card h3 {
   margin: 0;
-  font-size: 1.3rem;
+  font-size: 1.45rem;
   color: var(--heading-color);
   font-weight: var(--heading-weight);
   line-height: var(--heading-small-line-height);
@@ -75,10 +75,26 @@
   gap: 0.8rem;
 }
 
-.meta p {
-  margin: 0;
-  color: var(--text-muted);
-  line-height: 1.6;
+.metaCard {
+  display: grid;
+  gap: 0.25rem;
+  padding: 0.9rem;
+  border-radius: 18px;
+  background: var(--surface-strong);
+  border: 1px solid var(--border-color);
+}
+
+.metaCard span {
+  color: var(--text-subtle);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.metaCard strong {
+  color: var(--text-primary);
+  font-size: 0.98rem;
 }
 
 .stack {
@@ -150,7 +166,7 @@
 
 @media (max-width: 560px) {
   .card {
-    padding: 1.2rem;
+    padding: 1.15rem;
     border-radius: 24px;
   }
 

@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { profile } from "../../../lib/site-data";
 
 function fallbackBio() {
-  return `${profile.name} is a ${profile.role.toLowerCase()} from Nigeria who is focused on growing into a strong full-stack engineer. He enjoys building polished digital experiences, learning modern tools, and creating projects that solve real problems while opening new career opportunities in tech.`;
+  return `${profile.name} is a ${profile.role.toLowerCase()} from Nigeria who builds practical software across frontend engineering, SaaS platforms, automation systems, fintech products, and business applications. He focuses on clean interfaces, solid product structure, and software that creates real business value.`;
 }
 
 export async function POST() {

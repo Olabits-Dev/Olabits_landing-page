@@ -1,88 +1,79 @@
 import Link from "next/link";
-import { blogPosts, profile, projectShowcase, skills } from "../lib/site-data";
+import {
+  blogPosts,
+  buildAreas,
+  capabilityBands,
+  profile,
+  projectShowcase,
+  skills,
+} from "../lib/site-data";
 import styles from "./page.module.css";
 
-const featuredProjects = Object.entries(projectShowcase)
-  .filter(([, project]) => project.featured)
-  .slice(0, 3)
-  .map(([slug, project]) => ({
-    slug,
-    ...project,
-  }));
+const featuredProjects = [
+  "GMT-Homes-Real_Estate",
+  "job-alert-bot",
+  "Mt5-SaaS-Automated-Dashboard",
+  "Expensetracker_refilne",
+]
+  .map((slug) => {
+    const project = projectShowcase[slug];
+
+    if (!project) {
+      return null;
+    }
+
+    return {
+      slug,
+      ...project,
+    };
+  })
+  .filter(Boolean);
 
 const latestPosts = [...blogPosts]
   .sort((first, second) => new Date(second.date) - new Date(first.date))
   .slice(0, 3);
 
-const spotlightSkills = skills.filter((skill) =>
-  [
-    "HTML",
-    "CSS",
-    "JavaScript",
-    "React",
-    "Next.js",
-    "Node.js",
-    "REST APIs",
-    "Git & GitHub",
-  ].includes(skill.name)
-);
-
-const toolStack = Array.from(
-  new Set([
-    ...skills.map((skill) => skill.name),
-    ...featuredProjects.flatMap((project) => project.stack),
-  ])
-).slice(0, 14);
-
-const capabilityHighlights = [
-  {
-    title: "Frontend Engineering",
-    summary:
-      "Building responsive interfaces with strong visual hierarchy, clean structure, and maintainable component logic.",
-    tools: ["HTML", "CSS", "JavaScript", "React", "Next.js"],
-  },
-  {
-    title: "Backend Foundations",
-    summary:
-      "Adding server-side features, API integration, and product logic that make applications more useful and complete.",
-    tools: ["Node.js", "Express.js", "REST APIs"],
-  },
-  {
-    title: "Shipping Workflow",
-    summary:
-      "Turning ideas into portfolio-ready builds through Git-based iteration, reusable UI, and clear technical communication.",
-    tools: ["Git & GitHub", "Responsive Design", "Technical Writing"],
-  },
-];
-
-const developerSnapshot = [
-  "Responsive interfaces built to stay clean across mobile and desktop.",
-  "API-backed features that add useful product logic and real functionality.",
-  "Projects and technical writing that make engineering growth visible.",
-];
+const spotlightSkills = skills.slice(0, 8);
 
 function formatCount(count) {
   return count.toString().padStart(2, "0");
 }
 
+function formatDate(date) {
+  return new Date(date).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+}
+
 export default function HomePage() {
   const stats = [
-    { value: formatCount(skills.length), label: "Core skills" },
-    { value: formatCount(featuredProjects.length), label: "Featured projects" },
-    { value: formatCount(blogPosts.length), label: "Published posts" },
+    { value: formatCount(featuredProjects.length), label: "Featured builds" },
+    { value: formatCount(blogPosts.length), label: "Published notes" },
+    { value: formatCount(buildAreas.length), label: "Product lanes" },
+    { value: formatCount(skills.length), label: "Core tools" },
   ];
+
+  const rolePills = profile.roleLine.split(" • ");
 
   return (
     <main className={styles.page}>
       <section className={styles.hero}>
         <div className={styles.heroCopy}>
-          <p className={styles.eyebrow}>Software Developer Portfolio and Blog</p>
+          <p className={styles.eyebrow}>Portfolio • Blog • Product Work</p>
           <p className={styles.identity}>{profile.name}</p>
-          <h1>
-            Building polished web products, practical developer tools, and a stronger engineering
-            portfolio.
-          </h1>
-          <p className={styles.intro}>{profile.intro}</p>
+          <h1>{profile.headline}</h1>
+          <p className={styles.roleLine}>{profile.roleLine}</p>
+          <p className={styles.intro}>{profile.summary}</p>
+
+          <div className={styles.roleCluster}>
+            {rolePills.map((role) => (
+              <span key={role} className={styles.rolePill}>
+                {role}
+              </span>
+            ))}
+          </div>
 
           <div className={styles.ctaRow}>
             <Link href="/portfolio" className={styles.button}>
@@ -91,57 +82,73 @@ export default function HomePage() {
             <Link href="/blog" className={styles.ghostButton}>
               Read Blog
             </Link>
-            <Link href="/contact" className={styles.ghostButton}>
-              Contact Me
+            <Link href={profile.resumeUrl} className={styles.ghostButton}>
+              Download CV
             </Link>
           </div>
 
           <div className={styles.linkRow}>
-            <Link href={profile.githubUrl} target="_blank" rel="noreferrer" className={styles.inlineLink}>
-              GitHub
-            </Link>
-            <Link
-              href={profile.linkedinUrl}
-              target="_blank"
-              rel="noreferrer"
-              className={styles.inlineLink}
-            >
-              LinkedIn
-            </Link>
-            <Link href="/skills" className={styles.inlineLink}>
-              Skills
+            {profile.primaryLinks.map((link) => (
+              <Link
+                key={link.label}
+                href={link.href}
+                target={link.external ? "_blank" : undefined}
+                rel={link.external ? "noreferrer" : undefined}
+                className={styles.inlineLink}
+              >
+                {link.label}
+              </Link>
+            ))}
+            <Link href="/contact" className={styles.inlineLink}>
+              Contact
             </Link>
           </div>
         </div>
 
         <aside className={styles.heroPanel}>
-          <div className={styles.panelTop}>
-            <p className={styles.panelLabel}>Developer Snapshot</p>
-            <h2>{profile.role} focused on frontend quality, backend growth, and shipping useful digital products.</h2>
+          <div className={styles.portraitWrap}>
+            <div className={styles.portraitFrame}>
+              <img
+                src={profile.photo.src}
+                alt={profile.photo.alt}
+                className={styles.portrait}
+              />
+            </div>
+            <p className={styles.portraitCaption}>Focused on product quality, clarity, and useful software.</p>
           </div>
 
-          <div className={styles.metrics}>
-            {stats.map((stat) => (
-              <article key={stat.label} className={styles.metricCard}>
-                <strong>{stat.value}</strong>
-                <span>{stat.label}</span>
-              </article>
-            ))}
-          </div>
+          <div className={styles.panelContent}>
+            <p className={styles.panelLabel}>Current Positioning</p>
+            <h2>{profile.availability}</h2>
 
-          <ul className={styles.focusList}>
-            {developerSnapshot.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
+            <ul className={styles.focusList}>
+              {profile.quickFacts.map((fact) => (
+                <li key={fact}>{fact}</li>
+              ))}
+            </ul>
+
+            <div className={styles.profileViews}>
+              <span>Profile views</span>
+              <img src={profile.profileViewsUrl} alt="Profile views badge" />
+            </div>
+          </div>
         </aside>
       </section>
 
-      <section className={styles.overviewSection}>
-        <article className={styles.summaryCard}>
-          <p className={styles.sectionEyebrow}>Professional Direction</p>
-          <h2>Practical software development with a strong frontend base and growing full-stack depth.</h2>
-          <p className={styles.sectionText}>{profile.background}</p>
+      <section className={styles.statStrip}>
+        {stats.map((stat) => (
+          <article key={stat.label} className={styles.statCard}>
+            <strong>{stat.value}</strong>
+            <span>{stat.label}</span>
+          </article>
+        ))}
+      </section>
+
+      <section className={styles.storySection}>
+        <article className={styles.storyCard}>
+          <p className={styles.sectionEyebrow}>About Me</p>
+          <h2>{profile.background}</h2>
+          <p className={styles.sectionText}>{profile.intro}</p>
           <p className={styles.sectionText}>{profile.goals}</p>
 
           <div className={styles.interestList}>
@@ -153,16 +160,23 @@ export default function HomePage() {
           </div>
         </article>
 
-        <article className={styles.toolCard}>
-          <p className={styles.sectionEyebrow}>Tool Stack</p>
-          <h2>Technologies and workflows I rely on while building modern software products.</h2>
+        <article className={styles.storyAside}>
+          <div className={styles.storyPanel}>
+            <p className={styles.sectionEyebrow}>Current Focus</p>
+            <ul className={styles.storyList}>
+              {profile.currentFocus.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
 
-          <div className={styles.toolGrid}>
-            {toolStack.map((tool) => (
-              <span key={tool} className={styles.toolTag}>
-                {tool}
-              </span>
-            ))}
+          <div className={styles.storyPanel}>
+            <p className={styles.sectionEyebrow}>Open To</p>
+            <ul className={styles.storyList}>
+              {profile.openTo.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
           </div>
         </article>
       </section>
@@ -170,11 +184,11 @@ export default function HomePage() {
       <section className={styles.capabilitySection}>
         <div className={styles.sectionHeader}>
           <div>
-            <p className={styles.sectionEyebrow}>What I Do</p>
-            <h2>Necessary software development strengths, presented with more focus and clarity.</h2>
+            <p className={styles.sectionEyebrow}>How I Work</p>
+            <h2>Frontend precision, product structure, and systems that hold up beyond the first demo.</h2>
             <p className={styles.sectionText}>
-              From interface quality to backend features and workflow discipline, these are the
-              capabilities I keep sharpening through projects and writing.
+              I combine interface quality, practical backend thinking, and workflow automation so
+              the software is useful, understandable, and easier to scale.
             </p>
           </div>
 
@@ -184,7 +198,7 @@ export default function HomePage() {
         </div>
 
         <div className={styles.capabilityGrid}>
-          {capabilityHighlights.map((capability) => (
+          {capabilityBands.map((capability) => (
             <article key={capability.title} className={styles.capabilityCard}>
               <h3>{capability.title}</h3>
               <p>{capability.summary}</p>
@@ -201,30 +215,29 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className={styles.skillsSection}>
+      <section className={styles.buildSection}>
         <div className={styles.sectionHeader}>
           <div>
-            <p className={styles.sectionEyebrow}>Skills and Tools</p>
-            <h2>Core technologies I use to build professional software and portfolio-ready work.</h2>
-            <p className={styles.sectionText}>
-              These are the tools and disciplines I rely on most while developing applications,
-              improving product quality, and shipping work consistently.
-            </p>
+            <p className={styles.sectionEyebrow}>What I Build</p>
+            <h2>Software shaped around business use, automation value, and strong product presentation.</h2>
           </div>
 
-          <Link href="/skills" className={styles.sectionLink}>
-            See All Skills
+          <Link href="/portfolio" className={styles.sectionLink}>
+            Explore Selected Work
           </Link>
         </div>
 
-        <div className={styles.skillsGrid}>
-          {spotlightSkills.map((skill) => (
-            <article key={skill.name} className={styles.skillCard}>
-              <div className={styles.skillTop}>
-                <h3>{skill.name}</h3>
-                <span className={styles.skillLevel}>{skill.level}</span>
-              </div>
-              <p>{skill.description}</p>
+        <div className={styles.buildGrid}>
+          {buildAreas.map((area) => (
+            <article key={area.title} className={styles.buildCard}>
+              <h3>{area.title}</h3>
+              <p>{area.summary}</p>
+
+              <ul className={styles.buildList}>
+                {area.items.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
             </article>
           ))}
         </div>
@@ -233,11 +246,11 @@ export default function HomePage() {
       <section className={styles.workSection}>
         <div className={styles.sectionHeader}>
           <div>
-            <p className={styles.sectionEyebrow}>Selected Work</p>
-            <h2>Projects that show product thinking, frontend polish, and technical growth.</h2>
+            <p className={styles.sectionEyebrow}>Featured Projects</p>
+            <h2>Selected work across real estate, fintech automation, dashboards, and business tools.</h2>
             <p className={styles.sectionText}>
-              A few portfolio pieces that reflect the kind of interfaces, tools, and workflows I
-              have been building recently.
+              These projects reflect the kinds of interfaces, systems, and workflow-heavy products
+              I enjoy building.
             </p>
           </div>
 
@@ -253,6 +266,7 @@ export default function HomePage() {
                 <span className={styles.projectCategory}>{project.category}</span>
                 <span className={styles.projectStatus}>{project.status}</span>
               </div>
+
               <h3>{project.title}</h3>
               <p className={styles.projectText}>{project.summary}</p>
 
@@ -265,8 +279,36 @@ export default function HomePage() {
               </div>
 
               <Link href="/portfolio" className={styles.articleLink}>
-                Explore In Portfolio
+                View Project Details
               </Link>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className={styles.skillsSection}>
+        <div className={styles.sectionHeader}>
+          <div>
+            <p className={styles.sectionEyebrow}>Tech Stack</p>
+            <h2>The tools I rely on most when building product-facing interfaces and connected systems.</h2>
+          </div>
+
+          <Link href="/skills" className={styles.sectionLink}>
+            See All Skills
+          </Link>
+        </div>
+
+        <div className={styles.skillsGrid}>
+          {spotlightSkills.map((skill) => (
+            <article key={skill.name} className={styles.skillCard}>
+              <div className={styles.skillTop}>
+                <div>
+                  <p className={styles.skillCategory}>{skill.category}</p>
+                  <h3>{skill.name}</h3>
+                </div>
+                <span className={styles.skillLevel}>{skill.level}</span>
+              </div>
+              <p>{skill.description}</p>
             </article>
           ))}
         </div>
@@ -276,11 +318,7 @@ export default function HomePage() {
         <div className={styles.sectionHeader}>
           <div>
             <p className={styles.sectionEyebrow}>Latest Writing</p>
-            <h2>Recent posts from my learning journey in frontend and software development.</h2>
-            <p className={styles.sectionText}>
-              Writing is part of how I reflect on what I build, explain what I learn, and make my
-              growth more visible.
-            </p>
+            <h2>Notes from my frontend, backend, and software development learning journey.</h2>
           </div>
 
           <Link href="/blog" className={styles.sectionLink}>
@@ -293,18 +331,38 @@ export default function HomePage() {
             <article key={post.slug} className={styles.articleCard}>
               <span className={styles.articleCategory}>{post.category}</span>
               <h3>{post.title}</h3>
-              <p className={styles.articleMeta}>
-                {new Date(post.date).toLocaleDateString("en-US", {
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                })}
-              </p>
+              <p className={styles.articleMeta}>{formatDate(post.date)}</p>
               <p className={styles.articleSummary}>{post.summary}</p>
               <Link href={`/blog/${post.slug}`} className={styles.articleLink}>
                 Read Article
               </Link>
             </article>
+          ))}
+        </div>
+      </section>
+
+      <section className={styles.contactSection}>
+        <div className={styles.contactCopy}>
+          <p className={styles.sectionEyebrow}>Connect</p>
+          <h2>Available for product work, remote opportunities, and frontend-led software projects.</h2>
+          <p className={styles.sectionText}>
+            If you are building something that needs strong frontend execution, practical systems
+            thinking, or a polished product-facing experience, let&apos;s talk.
+          </p>
+        </div>
+
+        <div className={styles.contactGrid}>
+          {profile.contactLinks.map((link) => (
+            <Link
+              key={link.label}
+              href={link.href}
+              target={link.external ? "_blank" : undefined}
+              rel={link.external ? "noreferrer" : undefined}
+              className={styles.contactCard}
+            >
+              <strong>{link.label}</strong>
+              <span>{link.summary}</span>
+            </Link>
           ))}
         </div>
       </section>

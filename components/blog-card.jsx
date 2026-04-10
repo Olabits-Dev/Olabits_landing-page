@@ -12,10 +12,16 @@ function formatDate(date) {
 export default function BlogCard({ post }) {
   return (
     <article className={styles.card}>
-      <span className={styles.category}>{post.category}</span>
+      <div className={styles.top}>
+        <span className={styles.category}>{post.category}</span>
+        <p className={styles.meta}>{formatDate(post.date)}</p>
+      </div>
+
       <h3>{post.title}</h3>
-      <p className={styles.meta}>{formatDate(post.date)}</p>
       <p className={styles.summary}>{post.summary}</p>
+
+      <p className={styles.preview}>{post.content[0]}</p>
+
       <Link href={`/blog/${post.slug}`} className={styles.link}>
         Read full post
       </Link>

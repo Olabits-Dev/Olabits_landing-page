@@ -22,12 +22,12 @@ export async function generateMetadata({ params }) {
 
   if (!post) {
     return {
-      title: "Post Not Found | Olabits Blog Project",
+      title: "Post Not Found | Samuel Atilola",
     };
   }
 
   return {
-    title: `${post.title} | Olabits Blog Project`,
+    title: `${post.title} | Samuel Atilola`,
     description: post.summary,
   };
 }
@@ -44,13 +44,16 @@ export default async function BlogDetailsPage({ params }) {
 
   return (
     <main className={styles.page}>
-      <span className={styles.category}>{post.category}</span>
-      <h1 className={styles.title}>{post.title}</h1>
+      <section className={styles.hero}>
+        <span className={styles.category}>{post.category}</span>
+        <h1 className={styles.title}>{post.title}</h1>
+        <p className={styles.summary}>{post.summary}</p>
 
-      <div className={styles.metaRow}>
-        <p className={styles.date}>{formatDate(post.date)}</p>
-        <PostViewCounter slug={post.slug} initialViews={initialViews} />
-      </div>
+        <div className={styles.metaRow}>
+          <p className={styles.date}>{formatDate(post.date)}</p>
+          <PostViewCounter slug={post.slug} initialViews={initialViews} />
+        </div>
+      </section>
 
       <article className={styles.article}>
         {post.content.map((paragraph) => (

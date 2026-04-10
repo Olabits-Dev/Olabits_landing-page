@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { profile } from "../lib/site-data";
 import styles from "./navbar.module.css";
 import ThemeToggle from "./theme-toggle";
 
@@ -36,7 +37,10 @@ export default function Navbar() {
       <nav className={styles.nav}>
         <Link href="/" className={styles.brand} onClick={handleCloseMenu}>
           <span className={styles.brandDot} />
-          <span>Olabits Dev</span>
+          <span className={styles.brandCopy}>
+            <strong>{profile.shortName}</strong>
+            <small>{profile.alias}</small>
+          </span>
         </Link>
 
         <div className={styles.actions}>
@@ -66,16 +70,22 @@ export default function Navbar() {
             id="primary-navigation"
             className={`${styles.links} ${menuOpen ? styles.linksOpen : ""}`}
           >
-            {links.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={styles.link}
-                onClick={handleCloseMenu}
-              >
-                {link.label}
-              </Link>
-            ))}
+            {links.map((link) => {
+              const isActive =
+                pathname === link.href ||
+                (link.href !== "/" && pathname.startsWith(link.href));
+
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`${styles.link} ${isActive ? styles.linkActive : ""}`}
+                  onClick={handleCloseMenu}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
           </div>
         </div>
       </nav>

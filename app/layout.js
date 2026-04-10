@@ -4,9 +4,9 @@ import Navbar from "../components/navbar";
 import { DEFAULT_THEME, THEME_STORAGE_KEY } from "../lib/theme";
 
 export const metadata = {
-  title: "Olabits Dev Portfolio",
+  title: "Samuel Atilola | Frontend Developer and Software Engineer",
   description:
-    "A personal portfolio and blog built with Next.js, CSS Modules, dynamic routes, and API features.",
+    "An editorial-style portfolio and blog for Samuel Olawale Atilola, covering frontend engineering, SaaS products, automation systems, fintech builds, and business applications.",
 };
 
 const themeScript = `

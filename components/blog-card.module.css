@@ -1,14 +1,26 @@
 .card {
   border-radius: 28px;
-  padding: 1.5rem;
+  padding: 1.4rem;
   background: var(--blog-card-gradient);
   border: 1px solid var(--border-color);
   box-shadow: var(--shadow-medium);
+  display: grid;
+  gap: 0.9rem;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
 }
 
 .category {
   display: inline-flex;
-  padding: 0.45rem 0.8rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0.45rem 0.78rem;
   border-radius: 999px;
   background: var(--warning-soft);
   color: var(--warning-text);
@@ -17,35 +29,57 @@
 }
 
 .card h3 {
-  margin: 1rem 0 0.5rem;
-  font-size: 1.25rem;
+  margin: 0;
+  font-size: 1.4rem;
   color: var(--heading-color);
   font-weight: var(--heading-weight);
   line-height: var(--heading-small-line-height);
   letter-spacing: var(--heading-small-letter-spacing);
 }
 
-.meta {
+.meta,
+.summary,
+.preview {
   margin: 0;
+}
+
+.meta {
   color: var(--text-subtle);
-  font-size: 0.95rem;
+  font-size: 0.86rem;
   font-weight: 700;
 }
 
-.summary {
-  margin: 1rem 0;
+.summary,
+.preview {
   color: var(--text-muted);
   line-height: 1.7;
 }
 
+.preview {
+  color: var(--text-secondary);
+}
+
 .link {
-  color: var(--accent-text);
-  font-weight: 800;
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--cta-min-height);
+  padding: var(--cta-padding-block) var(--cta-padding-inline);
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--accent-start), var(--accent-end));
+  color: var(--text-inverse);
+  font-size: var(--cta-font-size);
+  font-weight: var(--cta-font-weight);
 }
 
 @media (max-width: 560px) {
   .card {
-    padding: 1.2rem;
+    padding: 1.15rem;
     border-radius: 24px;
+  }
+
+  .link {
+    width: 100%;
   }
 }

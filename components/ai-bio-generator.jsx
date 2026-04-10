@@ -33,8 +33,8 @@ export default function AIBioGenerator() {
         <p className={styles.kicker}>AI Feature</p>
         <h3>Generate a professional bio</h3>
         <p>
-          This section uses an API route to generate a polished bio. If no API key is configured,
-          the app falls back to a built-in generated response so the feature still works in class.
+          This section uses an API route to generate a polished short bio. If no API key is
+          configured, the site falls back to a built-in response so the feature still works.
         </p>
       </div>
 

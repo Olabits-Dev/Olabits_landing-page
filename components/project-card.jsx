@@ -24,12 +24,14 @@ export default function ProjectCard({ project }) {
       <p className={styles.summary}>{project.summary}</p>
 
       <div className={styles.meta}>
-        <p>
-          <strong>Primary tech:</strong> {project.language}
-        </p>
-        <p>
-          <strong>Updated:</strong> {formatDate(project.updatedAt)}
-        </p>
+        <article className={styles.metaCard}>
+          <span>Primary tech</span>
+          <strong>{project.language}</strong>
+        </article>
+        <article className={styles.metaCard}>
+          <span>Updated</span>
+          <strong>{formatDate(project.updatedAt)}</strong>
+        </article>
       </div>
 
       {project.stack.length > 0 ? (
