@@ -1,196 +1,188 @@
 .page {
-  width: min(1240px, 94%);
+  width: min(1200px, calc(100% - 32px));
   margin: 0 auto;
-  padding: 2.8rem 0 2.6rem;
-  display: grid;
-  gap: 1.8rem;
+  padding: 3rem 0;
+  overflow-x: hidden;
 }
 
-.hero {
+.bentoGrid {
   display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
-  gap: 1rem;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: minmax(160px, auto);
+  gap: 24px;
 }
 
-.copy,
-.panel {
-  border-radius: 30px;
-  padding: 1.45rem;
+.card {
+  background: var(--surface-panel);
+  border-radius: 32px;
+  padding: 24px;
   border: 1px solid var(--border-color);
-  box-shadow: var(--shadow-medium);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
-.copy {
-  display: grid;
-  gap: 0.9rem;
-  background:
-    radial-gradient(circle at top right, rgba(var(--accent-soft-rgb), 0.2), transparent 28%),
-    linear-gradient(180deg, var(--surface-strong), var(--surface-panel));
+.card img {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
 }
 
-.panel {
-  display: grid;
-  gap: 0.9rem;
-  align-content: start;
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.eyebrow {
+  display: inline-flex;
+  width: fit-content;
+  padding: 4px 12px;
+  border-radius: 99px;
+  background: var(--accent-blue-soft);
+  color: var(--accent-blue-text);
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.heroCard {
+  grid-column: span 3;
+  grid-row: span 2;
+  background: radial-gradient(circle at top right, rgba(var(--accent-soft-rgb), 0.1), transparent 40%),
+              var(--surface-strong);
+  justify-content: center;
+}
+
+.heroCard h1 {
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  line-height: 1.1;
+  margin-bottom: 20px;
+  color: var(--heading-color);
+}
+
+.lead {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.snapshotCard {
+  grid-column: span 1;
+  grid-row: span 2;
   background: var(--portfolio-panel-gradient);
 }
 
-.eyebrow,
-.panelLabel {
-  display: inline-flex;
-  width: fit-content;
-  align-items: center;
-  justify-content: center;
-  margin: 0;
-  padding: 0.38rem 0.78rem;
-  border-radius: 999px;
-  background: var(--accent-blue-soft);
-  color: var(--accent-blue-text);
-  font-size: 0.74rem;
-  font-weight: 800;
-  line-height: 1;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-
-.copy h1,
-.panel h2,
-.sectionHeading h2 {
-  margin: 0;
-  color: var(--heading-color);
-  font-weight: var(--heading-weight);
-}
-
-.copy h1 {
-  font-size: clamp(2.4rem, 5vw, 4.9rem);
-  line-height: 0.94;
-  letter-spacing: var(--heading-letter-spacing);
-  max-width: 12ch;
-}
-
-.panel h2,
-.sectionHeading h2 {
-  letter-spacing: var(--heading-medium-letter-spacing);
-}
-
-.lead,
-.panelText,
-.sectionHeading p,
-.statCard span {
-  margin: 0;
-  color: var(--text-muted);
-  line-height: var(--intro-line-height);
-}
-
-.actions {
-  display: flex;
-  gap: 0.8rem;
-  flex-wrap: wrap;
-  margin-top: 0.15rem;
-}
-
-.button,
-.ghostButton {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 999px;
-  min-height: var(--cta-min-height);
-  padding: var(--cta-padding-block) var(--cta-padding-inline);
-  font-size: var(--cta-font-size);
-  font-weight: var(--cta-font-weight);
-}
-
-.button {
-  background: linear-gradient(135deg, var(--accent-start), var(--accent-end));
-  color: var(--text-inverse);
-}
-
-.ghostButton {
-  border: 1px solid var(--border-strong);
-  background: var(--surface-soft);
-  color: var(--text-primary);
+.snapshotCard h2 {
+  font-size: 1.2rem;
+  margin-bottom: 16px;
 }
 
 .stats {
   display: grid;
-  gap: 0.85rem;
+  gap: 12px;
+  margin: 16px 0;
 }
 
 .statCard {
-  border-radius: 22px;
-  padding: 1rem;
-  background: var(--surface-strong);
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
   border: 1px solid var(--border-color);
-  display: grid;
-  gap: 0.32rem;
 }
 
 .statCard strong {
-  font-size: 1.18rem;
+  display: block;
+  font-size: 1.5rem;
   color: var(--heading-color);
 }
 
-.section {
+.statCard span {
+  font-size: 0.8rem;
+  color: var(--text-subtle);
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.button {
+  padding: 10px 20px;
+  border-radius: 99px;
+  background: var(--heading-color);
+  color: var(--text-inverse);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.ghostButton {
+  padding: 10px 20px;
+  border-radius: 99px;
+  border: 1px solid var(--border-color);
+  color: var(--heading-color);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.sectionHeader {
+  grid-column: span 4;
+  margin-top: 32px;
+}
+
+.sectionHeader h2 {
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+.projectGrid {
+  grid-column: span 4;
   display: grid;
-  gap: 1.2rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
 }
 
-.sectionHeading {
-  display: grid;
-  gap: 0.4rem;
-  max-width: 72ch;
+/* Responsiveness */
+@media (max-width: 1024px) {
+  .bentoGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
-.sectionHeading h2 {
-  font-size: clamp(1.9rem, 4vw, 3rem);
-  line-height: 0.98;
-}
+@media (max-width: 768px) {
+  .bentoGrid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+    gap: 16px;
+  }
+  
+  .card, .heroCard, .snapshotCard, .sectionHeader, .projectGrid {
+    grid-column: span 1 !important;
+    grid-row: auto !important;
+    padding: 20px;
+  }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem;
-}
-
-@media (max-width: 980px) {
-  .hero,
-  .grid {
+  .projectGrid {
     grid-template-columns: 1fr;
   }
 
-  .copy h1 {
-    max-width: 100%;
-  }
-}
-
-@media (max-width: 560px) {
-  .page {
-    width: min(1240px, 95%);
-    padding-top: 2rem;
+  .heroCard h1 {
+    font-size: 1.6rem;
   }
 
-  .copy,
-  .panel {
-    padding: 1.1rem;
-    border-radius: 24px;
-  }
-
-  .copy h1 {
-    font-size: clamp(2rem, 11vw, 3.2rem);
+  .sectionHeader h2 {
+    font-size: 1.6rem;
   }
 
   .actions {
-    display: grid;
-    grid-template-columns: 1fr;
+    flex-direction: column;
   }
-
-  .button,
-  .ghostButton {
+  .button, .ghostButton {
     width: 100%;
-  }
-
-  .statCard {
-    border-radius: 18px;
+    text-align: center;
   }
 }

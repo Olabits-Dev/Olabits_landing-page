@@ -12,18 +12,18 @@ export default function SkillsPage() {
 
   return (
     <main className={styles.page}>
-      <section className={styles.hero}>
-        <div className={styles.heroCopy}>
-          <p className={styles.eyebrow}>Tech Stack</p>
-          <h1>Tools I use across frontend, backend, mobile, automation, and delivery workflows.</h1>
+      <div className={styles.bentoGrid}>
+        {/* Row 1: Hero (3 cols) + Categories (1 col) */}
+        <section className={`${styles.card} ${styles.heroCard}`}>
+          <span className={styles.eyebrow}>Tech Stack</span>
+          <h1>Tools I use across frontend, backend, mobile, and automation workflows.</h1>
           <p className={styles.lead}>
-            My stack is shaped by real product needs: clean interfaces, dashboards, workflow
-            automation, backend integrations, and software that holds up in practice.
+            A curated stack shaped by real product needs and practical development experience.
           </p>
-        </div>
+        </section>
 
-        <aside className={styles.heroPanel}>
-          <p className={styles.panelLabel}>Categories</p>
+        <aside className={`${styles.card} ${styles.categoryCard}`}>
+          <span className={styles.eyebrow} style={{ background: 'rgba(255,255,255,0.1)', color: '#fff' }}>Disciplines</span>
           <div className={styles.categoryList}>
             {categories.map((category) => (
               <span key={category} className={styles.categoryTag}>
@@ -32,13 +32,14 @@ export default function SkillsPage() {
             ))}
           </div>
         </aside>
-      </section>
 
-      <section className={styles.grid}>
-        {skills.map((skill) => (
-          <SkillCard key={skill.name} {...skill} />
-        ))}
-      </section>
+        {/* Skills Section */}
+        <div className={styles.skillsSection}>
+          {skills.map((skill) => (
+            <SkillCard key={skill.name} {...skill} />
+          ))}
+        </div>
+      </div>
     </main>
   );
 }

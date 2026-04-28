@@ -1,154 +1,151 @@
 .page {
-  width: min(1240px, 94%);
+  width: min(1200px, calc(100% - 32px));
   margin: 0 auto;
-  padding: 2.8rem 0 2.6rem;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(360px, 0.92fr);
-  gap: 1rem;
+  padding: 3rem 0;
+  overflow-x: hidden;
 }
 
-.copy,
-.formPanel {
-  border: 1px solid var(--border-color);
-  border-radius: 30px;
-  padding: 1.45rem;
+.bentoGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: minmax(160px, auto);
+  gap: 24px;
+}
+
+.card {
   background: var(--surface-panel);
-  box-shadow: var(--shadow-medium);
+  border-radius: 32px;
+  padding: 24px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
-.copy {
-  display: grid;
-  gap: 1rem;
+.card img {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
 }
 
-.eyebrow,
-.panelLabel {
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.eyebrow {
   display: inline-flex;
   width: fit-content;
-  align-items: center;
-  justify-content: center;
-  margin: 0;
-  padding: 0.38rem 0.78rem;
-  border-radius: 999px;
+  padding: 4px 12px;
+  border-radius: 99px;
   background: var(--accent-soft);
   color: var(--accent-text);
-  font-size: 0.74rem;
-  font-weight: 800;
-  line-height: 1;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-
-.copy h1,
-.formIntro h2 {
-  margin: 0;
-  color: var(--heading-color);
-  font-weight: var(--heading-weight);
-}
-
-.copy h1 {
-  font-size: clamp(2.3rem, 5vw, 4.4rem);
-  line-height: 0.95;
-  letter-spacing: var(--heading-letter-spacing);
-  max-width: 12ch;
-}
-
-.lead,
-.formIntro p {
-  margin: 0;
-  color: var(--text-muted);
-  line-height: var(--intro-line-height);
-}
-
-.focusList {
-  display: flex;
-  gap: 0.7rem;
-  flex-wrap: wrap;
-}
-
-.focusTag {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.62rem 0.92rem;
-  border-radius: 999px;
-  background: var(--surface-strong);
-  border: 1px solid var(--border-color);
-  color: var(--text-primary);
+  font-size: 0.75rem;
   font-weight: 700;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
-.linkGrid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.9rem;
+.heroCard {
+  grid-column: span 2;
+  grid-row: span 2;
+  background: radial-gradient(circle at top right, rgba(var(--accent-soft-rgb), 0.15), transparent 40%),
+              var(--surface-strong);
+  justify-content: center;
 }
 
-.contactCard {
-  display: grid;
-  gap: 0.5rem;
-  padding: 1rem;
-  border-radius: 22px;
-  border: 1px solid var(--border-color);
-  background: var(--surface-strong);
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
-}
-
-.contactCard strong {
+.heroCard h1 {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  line-height: 1.1;
+  margin-bottom: 20px;
   color: var(--heading-color);
 }
 
-.contactCard span {
+.lead {
+  font-size: 1rem;
   color: var(--text-muted);
-  line-height: 1.65;
+  line-height: 1.6;
 }
 
-.contactCard:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-soft);
-}
-
-.formPanel {
-  display: grid;
-  gap: 1.1rem;
-  align-content: start;
+.formCard {
+  grid-column: span 2;
+  grid-row: span 3;
   background: var(--panel-gradient);
 }
 
 .formIntro {
-  display: grid;
-  gap: 0.7rem;
+  margin-bottom: 20px;
 }
 
-@media (max-width: 980px) {
-  .page {
-    grid-template-columns: 1fr;
-  }
+.formIntro h2 {
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+  color: var(--heading-color);
+}
 
-  .copy h1 {
-    max-width: 100%;
+.focusCard {
+  grid-column: span 2;
+}
+
+.focusList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.focusTag {
+  padding: 6px 14px;
+  background: var(--surface-accent);
+  border-radius: 99px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent-text);
+}
+
+.linkCard {
+  grid-column: span 1;
+}
+
+.linkCard strong {
+  font-size: 1.1rem;
+  color: var(--heading-color);
+  margin-bottom: 4px;
+}
+
+.linkCard span {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* Responsiveness */
+@media (max-width: 1024px) {
+  .bentoGrid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 560px) {
-  .page {
-    width: min(1240px, 95%);
-    padding-top: 2rem;
-  }
-
-  .copy,
-  .formPanel {
-    padding: 1.1rem;
-    border-radius: 24px;
-  }
-
-  .copy h1 {
-    font-size: clamp(2rem, 11vw, 3.1rem);
-  }
-
-  .linkGrid {
+@media (max-width: 768px) {
+  .bentoGrid {
     grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+    gap: 16px;
+  }
+  
+  .card, .heroCard, .formCard, .focusCard, .linkCard {
+    grid-column: span 1 !important;
+    grid-row: auto !important;
+    padding: 20px;
+  }
+
+  .heroCard h1 {
+    font-size: 1.6rem;
+  }
+
+  .formIntro h2 {
+    font-size: 1.3rem;
   }
 }

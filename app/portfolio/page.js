@@ -18,86 +18,75 @@ export default async function PortfolioPage() {
 
   return (
     <main className={styles.page}>
-      <section className={styles.hero}>
-        <div className={styles.copy}>
-          <p className={styles.eyebrow}>Selected Work</p>
-          <h1>Projects across automation, dashboards, real estate, product sites, and applied SaaS systems.</h1>
+      <div className={styles.bentoGrid}>
+        {/* Row 1: Hero (3 cols) + Snapshot (1 col) */}
+        <section className={`${styles.card} ${styles.heroCard}`}>
+          <span className={styles.eyebrow}>Selected Work</span>
+          <h1>Projects across automation, dashboards, real estate, and applied SaaS systems.</h1>
           <p className={styles.lead}>
-            This portfolio brings together curated write-ups and GitHub-backed repositories so the
-            work reads clearly for recruiters, collaborators, and product teams.
+            A curated collection of product work, frontend systems, and GitHub-backed repositories.
           </p>
 
           <div className={styles.actions}>
             <Link href={githubUrl} target="_blank" rel="noreferrer" className={styles.button}>
-              Visit GitHub Profile
+              GitHub Profile
             </Link>
             <Link href={profile.resumeUrl} className={styles.ghostButton}>
               Download CV
             </Link>
           </div>
-        </div>
+        </section>
 
-        <aside className={styles.panel}>
-          <p className={styles.panelLabel}>Portfolio Snapshot</p>
-          <h2>A GitHub-connected portfolio with curated summaries and product context.</h2>
+        <aside className={`${styles.card} ${styles.snapshotCard}`}>
+          <span className={styles.eyebrow} style={{ background: 'rgba(255,255,255,0.1)', color: '#fff' }}>Snapshot</span>
+          <h2>GitHub-connected portfolio with product context.</h2>
 
           <div className={styles.stats}>
-            <article className={styles.statCard}>
+            <div className={styles.statCard}>
               <strong>{repoCount}</strong>
-              <span>Public repos shown</span>
-            </article>
-            <article className={styles.statCard}>
+              <span>Public Repos</span>
+            </div>
+            <div className={styles.statCard}>
               <strong>{featuredCount}</strong>
-              <span>Featured projects</span>
-            </article>
-            <article className={styles.statCard}>
-              <strong>{primaryLanguages.join(", ")}</strong>
-              <span>Primary tools in view</span>
-            </article>
+              <span>Featured</span>
+            </div>
+            <div className={styles.statCard}>
+              <strong>{primaryLanguages.slice(0, 2).join(", ")}</strong>
+              <span>Core Tools</span>
+            </div>
           </div>
-
-          <p className={styles.panelText}>
-            Featured project descriptions are intentionally curated while the broader project list
-            stays connected to {profile.githubUsername} on GitHub.
-          </p>
         </aside>
-      </section>
 
-      {featuredProjects.length > 0 ? (
-        <section className={styles.section}>
-          <div className={styles.sectionHeading}>
-            <h2>Featured projects</h2>
-            <p>
-              These are the strongest examples of the products, systems, and user-facing
-              experiences I have been building recently.
-            </p>
-          </div>
+        {/* Featured Projects Section */}
+        {featuredProjects.length > 0 && (
+          <>
+            <div className={styles.sectionHeader}>
+              <h2>Featured Projects</h2>
+              <p className={styles.lead}>Top examples of my recent product builds.</p>
+            </div>
+            <div className={styles.projectGrid}>
+              {featuredProjects.map((project) => (
+                <ProjectCard key={project.id} project={project} />
+              ))}
+            </div>
+          </>
+        )}
 
-          <div className={styles.grid}>
-            {featuredProjects.map((project) => (
-              <ProjectCard key={project.id} project={project} />
-            ))}
-          </div>
-        </section>
-      ) : null}
-
-      {otherProjects.length > 0 ? (
-        <section className={styles.section}>
-          <div className={styles.sectionHeading}>
-            <h2>More from GitHub</h2>
-            <p>
-              The rest of my public repositories also appear here so the portfolio reflects the
-              wider range of experiments, learning, and product directions on my profile.
-            </p>
-          </div>
-
-          <div className={styles.grid}>
-            {otherProjects.map((project) => (
-              <ProjectCard key={project.id} project={project} />
-            ))}
-          </div>
-        </section>
-      ) : null}
+        {/* Other Projects Section */}
+        {otherProjects.length > 0 && (
+          <>
+            <div className={styles.sectionHeader}>
+              <h2>More from GitHub</h2>
+              <p className={styles.lead}>Public experiments and learning projects.</p>
+            </div>
+            <div className={styles.projectGrid}>
+              {otherProjects.map((project) => (
+                <ProjectCard key={project.id} project={project} />
+              ))}
+            </div>
+          </>
+        )}
+      </div>
     </main>
   );
 }

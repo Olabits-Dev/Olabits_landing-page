@@ -10,42 +10,41 @@ export const metadata = {
 export default function AboutPage() {
   return (
     <main className={styles.page}>
-      <section className={styles.hero}>
-        <div className={styles.heroCopy}>
-          <p className={styles.eyebrow}>About Samuel</p>
-          <h1>Building useful software with clean interfaces, solid structure, and business value.</h1>
+      <div className={styles.bentoGrid}>
+        {/* Row 1: Hero (3 cols) + Focus (1 col) */}
+        <section className={`${styles.card} ${styles.heroCard}`}>
+          <span className={styles.eyebrow}>About Samuel</span>
+          <h1>Building useful software with clean interfaces and solid structure.</h1>
           <p className={styles.lead}>{profile.background}</p>
-          <p className={styles.lead}>{profile.goals}</p>
-        </div>
+        </section>
 
-        <aside className={styles.heroPanel}>
-          <p className={styles.panelLabel}>Current Focus</p>
+        <aside className={`${styles.card} ${styles.focusCard}`}>
+          <span className={styles.eyebrow}>Focus</span>
           <ul className={styles.list}>
             {profile.currentFocus.map((item) => (
               <li key={item}>{item}</li>
             ))}
           </ul>
         </aside>
-      </section>
 
-      <section className={styles.grid}>
-        <article className={styles.card}>
-          <p className={styles.sectionEyebrow}>Role Mix</p>
+        {/* Row 2: Role Mix (2 cols) + Open To (1 col) + Hobbies (1 col) */}
+        <article className={`${styles.card} ${styles.roleCard}`}>
+          <span className={styles.eyebrow}>Role Mix</span>
           <h2>{profile.roleLine}</h2>
-          <p>{profile.summary}</p>
+          <p className={styles.lead} style={{ fontSize: '1rem' }}>{profile.summary}</p>
         </article>
 
-        <article className={styles.card}>
-          <p className={styles.sectionEyebrow}>Open To</p>
+        <article className={`${styles.card} ${styles.openToCard}`}>
+          <span className={styles.eyebrow}>Open To</span>
           <ul className={styles.list}>
-            {profile.openTo.map((item) => (
-              <li key={item}>{item}</li>
+            {profile.openTo.slice(0, 3).map((item) => (
+              <li key={item} style={{ padding: '8px 12px', fontSize: '0.85rem' }}>{item}</li>
             ))}
           </ul>
         </article>
 
-        <article className={styles.card}>
-          <p className={styles.sectionEyebrow}>Outside Work</p>
+        <article className={`${styles.card} ${styles.hobbyCard}`}>
+          <span className={styles.eyebrow}>Interests</span>
           <div className={styles.hobbyList}>
             {profile.hobbies.map((hobby) => (
               <span key={hobby} className={styles.hobby}>
@@ -54,32 +53,30 @@ export default function AboutPage() {
             ))}
           </div>
         </article>
-      </section>
 
-      <section className={styles.buildSection}>
+        {/* Section Header */}
         <div className={styles.sectionHeader}>
-          <div>
-            <p className={styles.sectionEyebrow}>Build Areas</p>
-            <h2>The product spaces I keep returning to as a builder.</h2>
-          </div>
+          <h2>Build Areas</h2>
         </div>
 
-        <div className={styles.buildGrid}>
-          {buildAreas.map((area) => (
-            <article key={area.title} className={styles.buildCard}>
-              <h3>{area.title}</h3>
-              <p>{area.summary}</p>
-              <ul className={styles.list}>
-                {area.items.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </article>
-          ))}
-        </div>
-      </section>
+        {/* Build Areas Grid */}
+        {buildAreas.map((area) => (
+          <article key={area.title} className={`${styles.card} ${styles.buildCard}`}>
+            <span className={styles.eyebrow}>Space</span>
+            <h3>{area.title}</h3>
+            <p>{area.summary}</p>
+            <ul className={styles.list}>
+              {area.items.map((item) => (
+                <li key={item} style={{ padding: '8px 12px', fontSize: '0.85rem' }}>{item}</li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
 
-      <AIBioGenerator />
+      <div style={{ marginTop: '48px' }}>
+        <AIBioGenerator />
+      </div>
     </main>
   );
 }

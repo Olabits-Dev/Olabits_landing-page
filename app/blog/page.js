@@ -22,46 +22,42 @@ export default function BlogPage() {
 
   return (
     <main className={styles.page}>
-      <section className={styles.hero}>
-        <div className={styles.heroCopy}>
-          <p className={styles.eyebrow}>Writing Archive</p>
-          <h1>Thoughts, lessons, and working notes from my software development journey.</h1>
+      <div className={styles.bentoGrid}>
+        {/* Row 1: Hero (2 cols) + Featured Post (2 cols) */}
+        <section className={`${styles.card} ${styles.heroCard}`}>
+          <span className={styles.eyebrow}>Writing Archive</span>
+          <h1>Thoughts, lessons, and notes from my dev journey.</h1>
           <p className={styles.lead}>
-            This blog is where I document how I think through frontend structure, backend growth,
-            and the practical decisions behind the products I build.
+            Documenting frontend structure, backend growth, and product decisions.
           </p>
-        </div>
+        </section>
 
-        <aside className={styles.heroPanel}>
-          <p className={styles.panelLabel}>Most Recent</p>
+        <aside className={`${styles.card} ${styles.featuredPostCard}`}>
+          <span className={styles.eyebrow} style={{ background: 'rgba(255,255,255,0.1)', color: '#fff' }}>Most Recent</span>
           <h2>{featuredPost.title}</h2>
           <p className={styles.panelMeta}>
             {featuredPost.category} • {formatDate(featuredPost.date)}
           </p>
-          <p className={styles.panelText}>{featuredPost.summary}</p>
+          <p className={styles.lead} style={{ fontSize: '1rem', color: 'rgba(255,255,255,0.8)' }}>
+            {featuredPost.summary}
+          </p>
           <Link href={`/blog/${featuredPost.slug}`} className={styles.button}>
-            Read Featured Post
+            Read Post
           </Link>
         </aside>
-      </section>
 
-      <section className={styles.archive}>
-        <div className={styles.archiveHeader}>
-          <div>
-            <p className={styles.eyebrow}>Archive</p>
-            <h2>Published posts</h2>
-          </div>
-          <p className={styles.archiveText}>
-            Notes on HTML, CSS, React, APIs, and the tooling that supports stronger product work.
-          </p>
+        {/* Archive Section */}
+        <div className={styles.sectionHeader}>
+          <h2>Published Posts</h2>
+          <p className={styles.lead}>Notes on HTML, CSS, React, and product tooling.</p>
         </div>
 
-        <div className={styles.grid}>
+        <div className={styles.archiveGrid}>
           {archivePosts.map((post) => (
             <BlogCard key={post.slug} post={post} />
           ))}
         </div>
-      </section>
+      </div>
     </main>
   );
 }
