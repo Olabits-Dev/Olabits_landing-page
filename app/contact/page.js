@@ -5,7 +5,7 @@ import styles from "./page.module.css";
 
 export const metadata = {
   title: "Contact | Samuel Atilola",
-  description: "Contact Samuel Atilola for frontend engineering, SaaS, and automation-focused work.",
+  description: "Contact Samuel Atilola for Software Engineering, SaaS, and automation-focused work.",
 };
 
 export default function ContactPage() {
@@ -15,7 +15,7 @@ export default function ContactPage() {
         {/* Row 1 & 2: Hero (2 cols) + Form (2 cols, 3 rows) */}
         <section className={`${styles.card} ${styles.heroCard}`}>
           <span className={styles.eyebrow}>Contact</span>
-          <h1>Let&apos;s talk about frontend systems and product work.</h1>
+          <h1>Let&apos;s talk about software and product work.</h1>
           <p className={styles.lead}>
             Reach out through the form or any of the social links below.
           </p>
