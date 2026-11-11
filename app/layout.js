@@ -4,9 +4,9 @@ import Navbar from "../components/navbar";
 import { DEFAULT_THEME, THEME_STORAGE_KEY } from "../lib/theme";
 
 export const metadata = {
-  title: "Samuel Atilola | Frontend Developer and Software Engineer",
+  title: "Samuel Atilola | Full-Stack & Mobile Software Engineer",
   description:
-    "An editorial-style portfolio and blog for Samuel Olawale Atilola, covering frontend engineering, SaaS products, automation systems, fintech builds, and business applications.",
+    "Portfolio of Samuel Olawale Atilola — Full-Stack & Mobile Software Engineer building scalable web applications, React Native mobile apps, SaaS platforms, automation systems, and fintech products across Nigeria and Africa.",
 };
 
 const themeScript = `

@@ -3,8 +3,8 @@ import { buildAreas, profile } from "../../lib/site-data";
 import styles from "./page.module.css";
 
 export const metadata = {
-  title: "About | Samuel Atilola",
-  description: "Background, focus areas, and product direction for Samuel Atilola.",
+  title: "About | Samuel Atilola — Full-Stack & Mobile Engineer",
+  description: "Full-Stack & Mobile Software Engineer — background, skills, focus areas, and project direction for Samuel Atilola.",
 };
 
 export default function AboutPage() {
@@ -14,7 +14,7 @@ export default function AboutPage() {
         {/* Row 1: Hero (3 cols) + Focus (1 col) */}
         <section className={`${styles.card} ${styles.heroCard}`}>
           <span className={styles.eyebrow}>About Samuel</span>
-          <h1>Building useful software with clean interfaces and solid structure.</h1>
+          <h1>Full-Stack & Mobile Engineer building scalable web apps, mobile applications, and business automation systems.</h1>
           <p className={styles.lead}>{profile.background}</p>
         </section>
 

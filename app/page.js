@@ -21,6 +21,9 @@ export default function HomePage() {
         <section className={`${styles.card} ${styles.introCard}`}>
           <div>
             <h1>{profile.name}</h1>
+            <p style={{ fontSize: '0.95rem', fontWeight: '600', color: 'var(--accent-text)', marginBottom: '8px', marginTop: '4px' }}>
+              {profile.role}
+            </p>
             <p>{profile.headline}</p>
             <div className={styles.ctaRow}>
               <Link href="/portfolio" className={styles.button}>Projects</Link>
