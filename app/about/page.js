@@ -1,28 +1,40 @@
 import AIBioGenerator from "../../components/ai-bio-generator";
-import { buildAreas, experience, profile } from "../../lib/site-data";
+import { buildAreas, education, experience, profile } from "../../lib/site-data";
 import styles from "./page.module.css";
 
 export const metadata = {
   title: "About & Experience | Samuel Atilola — Full-Stack & Mobile Engineer",
   description:
-    "Software engineering roles, full-stack web and React Native mobile experience, focus areas, and architecture capabilities for Samuel Atilola.",
+    "Software engineering roles, full-stack web and React Native mobile experience, education, focus areas, and architecture capabilities for Samuel Atilola.",
 };
 
 export default function AboutPage() {
   return (
-    <main className={styles.page}>
+    <main id="main-content" tabIndex={-1} className={styles.page}>
       <div className={styles.bentoGrid}>
         {/* Row 1: Hero (3 cols) + Focus (1 col) */}
         <section className={`${styles.card} ${styles.heroCard}`}>
-          <span className={styles.eyebrow}>About Samuel</span>
-          <h1>
-            Senior Full-Stack &amp; Mobile Engineer building resilient web, mobile, and AI systems.
-          </h1>
+          <div className={styles.heroIntroRow}>
+            <img
+              src={profile.photo.src}
+              alt={profile.photo.alt}
+              width="76"
+              height="76"
+              fetchPriority="high"
+              className={styles.aboutAvatar}
+            />
+            <div>
+              <span className={styles.eyebrow}>About Samuel</span>
+              <h1>
+                Senior Full-Stack &amp; Mobile Engineer building resilient web, mobile, and AI systems.
+              </h1>
+            </div>
+          </div>
           <p className={styles.lead}>{profile.background}</p>
         </section>
 
         <aside className={`${styles.card} ${styles.focusCard}`}>
-          <span className={styles.eyebrow}>Focus</span>
+          <span className={styles.eyebrow}>Current Focus</span>
           <ul className={styles.list}>
             {profile.currentFocus.map((item) => (
               <li key={item}>{item}</li>
@@ -30,13 +42,23 @@ export default function AboutPage() {
           </ul>
         </aside>
 
-        {/* Row 2: Role Mix (2 cols) + Open To (1 col) + Interests (1 col) */}
+        {/* Row 2: Role Mix + Education (2 cols) + Open To (1 col) + Interests (1 col) */}
         <article className={`${styles.card} ${styles.roleCard}`}>
-          <span className={styles.eyebrow}>Role Mix</span>
+          <span className={styles.eyebrow}>Positioning &amp; Education</span>
           <h2>{profile.roleLine}</h2>
           <p className={styles.lead} style={{ fontSize: "1rem" }}>
             {profile.summary}
           </p>
+          <div className={styles.educationGrid}>
+            {education.map((edu) => (
+              <div key={edu.credential} className={styles.educationCard}>
+                <strong>{edu.credential}</strong>
+                <span>
+                  {edu.institution} &bull; {edu.period}
+                </span>
+              </div>
+            ))}
+          </div>
         </article>
 
         <article className={`${styles.card} ${styles.openToCard}`}>

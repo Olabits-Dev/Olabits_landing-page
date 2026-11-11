@@ -11,7 +11,7 @@ export const metadata = {
 
 export default function ContactPage() {
   return (
-    <main className={styles.page}>
+    <main id="main-content" tabIndex={-1} className={styles.page}>
       <div className={styles.bentoGrid}>
         {/* Row 1 & 2: Hero (2 cols) + Form (2 cols, 3 rows) */}
         <section className={`${styles.card} ${styles.heroCard}`}>
@@ -25,8 +25,8 @@ export default function ContactPage() {
 
         <section className={`${styles.card} ${styles.formCard}`}>
           <div className={styles.formIntro}>
-            <span className={styles.eyebrow} style={{ background: 'rgba(255,255,255,0.1)', color: '#fff' }}>Quick Message</span>
-            <h2>Send a note directly to WhatsApp.</h2>
+            <span className={styles.eyebrow}>Quick Message</span>
+            <h2>Send a project brief directly to WhatsApp.</h2>
           </div>
           <ContactForm />
         </section>

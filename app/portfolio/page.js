@@ -1,5 +1,5 @@
 import Link from "next/link";
-import ProjectCard from "../../components/project-card";
+import PortfolioExplorer from "../../components/portfolio-explorer";
 import { getPortfolioPageData } from "../../lib/portfolio";
 import { profile } from "../../lib/site-data";
 import styles from "./page.module.css";
@@ -17,7 +17,7 @@ export default async function PortfolioPage() {
   const otherProjects = projects.filter((project) => !project.featured);
 
   return (
-    <main className={styles.page}>
+    <main id="main-content" tabIndex={-1} className={styles.page}>
       <div className={styles.bentoGrid}>
         {/* Row 1: Hero (3 cols) + Snapshot (1 col) */}
         <section className={`${styles.card} ${styles.heroCard}`}>
@@ -29,7 +29,15 @@ export default async function PortfolioPage() {
           </p>
 
           <div className={styles.actions}>
-            <Link href={githubUrl} target="_blank" rel="noreferrer" className={styles.button}>
+            <Link
+              href={profile.whatsappUrl}
+              target="_blank"
+              rel="noreferrer"
+              className={styles.button}
+            >
+              Discuss a Project
+            </Link>
+            <Link href={githubUrl} target="_blank" rel="noreferrer" className={styles.ghostButton}>
               GitHub Profile
             </Link>
             <Link href={profile.resumeUrl} className={styles.ghostButton}>
@@ -39,7 +47,7 @@ export default async function PortfolioPage() {
         </section>
 
         <aside className={`${styles.card} ${styles.snapshotCard}`}>
-          <span className={styles.eyebrow} style={{ background: 'rgba(255,255,255,0.1)', color: '#fff' }}>Snapshot</span>
+          <span className={styles.eyebrow}>Snapshot</span>
           <h2>Full-stack &amp; mobile engineering across public and client systems.</h2>
 
           <div className={styles.stats}>
@@ -58,35 +66,7 @@ export default async function PortfolioPage() {
           </div>
         </aside>
 
-        {/* Featured Projects Section */}
-        {featuredProjects.length > 0 && (
-          <>
-            <div className={styles.sectionHeader}>
-              <h2>Featured Projects</h2>
-              <p className={styles.lead}>Top examples of my recent product builds.</p>
-            </div>
-            <div className={styles.projectGrid}>
-              {featuredProjects.map((project) => (
-                <ProjectCard key={project.id} project={project} />
-              ))}
-            </div>
-          </>
-        )}
-
-        {/* Other Projects Section */}
-        {otherProjects.length > 0 && (
-          <>
-            <div className={styles.sectionHeader}>
-              <h2>More from GitHub</h2>
-              <p className={styles.lead}>Public experiments and learning projects.</p>
-            </div>
-            <div className={styles.projectGrid}>
-              {otherProjects.map((project) => (
-                <ProjectCard key={project.id} project={project} />
-              ))}
-            </div>
-          </>
-        )}
+        <PortfolioExplorer featuredProjects={featuredProjects} otherProjects={otherProjects} />
       </div>
     </main>
   );

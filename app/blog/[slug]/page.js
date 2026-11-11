@@ -43,7 +43,7 @@ export default async function BlogDetailsPage({ params }) {
   const initialViews = getViewCount(post.slug, 20);
 
   return (
-    <main className={styles.page}>
+    <main id="main-content" tabIndex={-1} className={styles.page}>
       <section className={styles.hero}>
         <span className={styles.category}>{post.category}</span>
         <h1 className={styles.title}>{post.title}</h1>

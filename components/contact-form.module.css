@@ -1,22 +1,36 @@
 .form {
   display: grid;
-  gap: 1rem;
+  gap: 1.1rem;
 }
 
 .field {
   display: grid;
   gap: 0.45rem;
+}
+
+.field label {
   color: var(--text-primary);
   font-weight: 700;
+  font-size: 0.95rem;
 }
 
 .field input,
+.field select,
 .field textarea {
   border: 1px solid var(--border-strong);
-  border-radius: 18px;
-  padding: 0.95rem 1rem;
+  border-radius: 16px;
+  padding: 0.85rem 1rem;
+  min-block-size: 48px;
   font: inherit;
+  font-size: max(1rem, 1em);
+  color: var(--text-primary);
   background: var(--surface-strong);
+  inline-size: 100%;
+}
+
+.field textarea {
+  min-block-size: 132px;
+  resize: vertical;
 }
 
 .field input::placeholder,
@@ -24,40 +38,69 @@
   color: var(--text-subtle);
 }
 
-.field input:focus,
-.field textarea:focus {
-  outline: 2px solid var(--focus-ring);
+.field input:focus-visible,
+.field select:focus-visible,
+.field textarea:focus-visible {
+  outline: 2px solid var(--accent-end);
+  outline-offset: 2px;
   border-color: var(--accent-end);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
 }
 
 .button {
   width: fit-content;
   border: 0;
   border-radius: 999px;
-  min-height: var(--cta-min-height);
-  padding: var(--cta-padding-block) var(--cta-padding-inline);
-  font-size: var(--cta-font-size);
+  min-height: 48px;
+  padding: var(--cta-padding-block) 1.4rem;
   font: inherit;
+  font-size: var(--cta-font-size);
   font-weight: var(--cta-font-weight);
   color: var(--text-inverse);
   background: linear-gradient(135deg, var(--accent-start), var(--accent-end));
   cursor: pointer;
 }
 
+.directLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: var(--cta-padding-block) 1.2rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-strong);
+  background: var(--surface-strong);
+  color: var(--heading-color);
+  font-weight: 700;
+  font-size: var(--cta-font-size);
+}
+
 .success {
   margin: 0;
   color: var(--success-text);
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .error {
   margin: 0;
   color: var(--error-text);
-  font-weight: 800;
+  font-weight: 700;
 }
 
 @media (max-width: 640px) {
-  .button {
+  .actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .button,
+  .directLink {
     width: 100%;
   }
 }

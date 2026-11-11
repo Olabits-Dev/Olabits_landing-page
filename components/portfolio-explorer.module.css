@@ -1,0 +1,111 @@
+.explorer {
+  grid-column: span 4;
+  display: grid;
+  gap: 28px;
+  margin-top: 8px;
+}
+
+.filterBar {
+  display: flex;
+  flex-wrap: wrap;
+  flex-wrap: balance;
+  gap: 10px;
+  align-items: center;
+}
+
+.filterButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: var(--cta-min-height);
+  padding: 0.55rem 1.05rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-strong);
+  background: var(--surface-panel);
+  color: var(--text-secondary);
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.15s ease;
+}
+
+.filterButton:hover {
+  transform: translateY(-1px);
+  border-color: var(--accent-end);
+  color: var(--text-primary);
+}
+
+.filterButtonActive {
+  background: linear-gradient(135deg, var(--accent-start), var(--accent-end));
+  border-color: transparent;
+  color: var(--text-inverse);
+}
+
+.filterButtonActive:hover {
+  color: var(--text-inverse);
+}
+
+.checkMark {
+  font-weight: 800;
+}
+
+.count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  background: var(--surface-inset);
+}
+
+.filterButtonActive .count {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.group {
+  display: grid;
+  gap: 20px;
+}
+
+.sectionHeader h2 {
+  font-size: 2rem;
+  margin: 0 0 8px;
+  color: var(--heading-color);
+}
+
+.lead {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.projectGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+@media (max-width: 1024px) {
+  .explorer {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 768px) {
+  .explorer {
+    grid-column: span 1 !important;
+  }
+
+  .projectGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .sectionHeader h2 {
+    font-size: 1.6rem;
+  }
+}

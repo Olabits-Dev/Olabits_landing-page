@@ -21,24 +21,24 @@ export default function BlogPage() {
   const [featuredPost, ...archivePosts] = posts;
 
   return (
-    <main className={styles.page}>
+    <main id="main-content" tabIndex={-1} className={styles.page}>
       <div className={styles.bentoGrid}>
         {/* Row 1: Hero (2 cols) + Featured Post (2 cols) */}
         <section className={`${styles.card} ${styles.heroCard}`}>
           <span className={styles.eyebrow}>Writing Archive</span>
-          <h1>Thoughts, lessons, and notes from my dev journey.</h1>
+          <h1>Architecture notes &amp; lessons from building web, mobile, and AI systems.</h1>
           <p className={styles.lead}>
-            Documenting frontend structure, backend growth, and product decisions.
+            Notes covering offline-first mobile sync, BFF architectures, REST APIs, and product engineering.
           </p>
         </section>
 
         <aside className={`${styles.card} ${styles.featuredPostCard}`}>
-          <span className={styles.eyebrow} style={{ background: 'rgba(255,255,255,0.1)', color: '#fff' }}>Most Recent</span>
+          <span className={styles.eyebrow}>Most Recent</span>
           <h2>{featuredPost.title}</h2>
           <p className={styles.panelMeta}>
             {featuredPost.category} • {formatDate(featuredPost.date)}
           </p>
-          <p className={styles.lead} style={{ fontSize: '1rem', color: 'rgba(255,255,255,0.8)' }}>
+          <p className={styles.lead} style={{ fontSize: '1rem' }}>
             {featuredPost.summary}
           </p>
           <Link href={`/blog/${featuredPost.slug}`} className={styles.button}>
