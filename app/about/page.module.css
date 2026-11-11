@@ -156,10 +156,72 @@
   margin-bottom: 16px;
 }
 
+.experienceCard {
+  grid-column: span 2;
+  gap: 10px;
+}
+
+.experienceTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.experienceTop .eyebrow {
+  margin-bottom: 0;
+}
+
+.experienceType {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-subtle);
+}
+
+.experienceCard h3 {
+  font-size: 1.4rem;
+  color: var(--heading-color);
+  margin: 4px 0 0;
+}
+
+.companyName {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--accent-text);
+  margin: 0;
+}
+
+.experienceSummary {
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 4px;
+}
+
+.stackRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.stackTag {
+  padding: 5px 12px;
+  background: var(--surface-accent);
+  border-radius: 99px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent-text);
+}
+
 /* Responsiveness */
 @media (max-width: 1024px) {
   .bentoGrid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .heroCard, .sectionHeader {
+    grid-column: span 2;
   }
 }
 
@@ -170,7 +232,7 @@
     gap: 16px;
   }
   
-  .card, .heroCard, .focusCard, .roleCard, .openToCard, .hobbyCard, .buildCard, .sectionHeader {
+  .card, .heroCard, .focusCard, .roleCard, .openToCard, .hobbyCard, .buildCard, .experienceCard, .sectionHeader {
     grid-column: span 1 !important;
     grid-row: auto !important;
     padding: 20px;

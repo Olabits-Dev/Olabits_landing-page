@@ -53,9 +53,15 @@ export default function ProjectCard({ project }) {
       ) : null}
 
       <div className={styles.links}>
-        <Link href={project.repoUrl} target="_blank" rel="noreferrer" className={styles.link}>
-          View repository
-        </Link>
+        {project.repoUrl ? (
+          <Link href={project.repoUrl} target="_blank" rel="noreferrer" className={styles.link}>
+            View repository
+          </Link>
+        ) : (
+          <Link href="/contact" className={styles.link}>
+            Request case study / demo
+          </Link>
+        )}
         {project.liveUrl ? (
           <Link href={project.liveUrl} target="_blank" rel="noreferrer" className={styles.ghostLink}>
             Live preview

@@ -5,9 +5,9 @@ import { profile } from "../../lib/site-data";
 import styles from "./page.module.css";
 
 export const metadata = {
-  title: "Portfolio | Samuel Atilola",
+  title: "Portfolio | Samuel Atilola — Full-Stack & Mobile Engineer",
   description:
-    "A project portfolio featuring Samuel Atilola's frontend, SaaS, automation, fintech, and business software work.",
+    "Software engineering portfolio of Samuel Atilola covering full-stack web platforms, React Native & Capacitor mobile apps, AI SaaS products, B2B ERPs, and fintech automation.",
 };
 
 export default async function PortfolioPage() {
@@ -21,10 +21,11 @@ export default async function PortfolioPage() {
       <div className={styles.bentoGrid}>
         {/* Row 1: Hero (3 cols) + Snapshot (1 col) */}
         <section className={`${styles.card} ${styles.heroCard}`}>
-          <span className={styles.eyebrow}>Selected Work</span>
-          <h1>Projects across automation, dashboards, real estate, and applied SaaS systems.</h1>
+          <span className={styles.eyebrow}>Selected Engineering Work</span>
+          <h1>Full-stack platforms, offline-first mobile apps, AI SaaS &amp; automation systems.</h1>
           <p className={styles.lead}>
-            A curated collection of product work, frontend systems, and GitHub-backed repositories.
+            Production client architectures and GitHub repositories spanning React Native, Expo,
+            Next.js App Router, Vue 3, Node.js, PostgreSQL, and Python.
           </p>
 
           <div className={styles.actions}>
@@ -39,20 +40,20 @@ export default async function PortfolioPage() {
 
         <aside className={`${styles.card} ${styles.snapshotCard}`}>
           <span className={styles.eyebrow} style={{ background: 'rgba(255,255,255,0.1)', color: '#fff' }}>Snapshot</span>
-          <h2>GitHub-connected portfolio with product context.</h2>
+          <h2>Full-stack &amp; mobile engineering across public and client systems.</h2>
 
           <div className={styles.stats}>
             <div className={styles.statCard}>
               <strong>{repoCount}</strong>
-              <span>Public Repos</span>
+              <span>Shipped Projects</span>
             </div>
             <div className={styles.statCard}>
               <strong>{featuredCount}</strong>
-              <span>Featured</span>
+              <span>Featured Builds</span>
             </div>
             <div className={styles.statCard}>
               <strong>{primaryLanguages.slice(0, 2).join(", ")}</strong>
-              <span>Core Tools</span>
+              <span>Core Tech</span>
             </div>
           </div>
         </aside>
