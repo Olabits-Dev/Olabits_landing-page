@@ -12,7 +12,7 @@ export default function SkillsPage() {
   const categories = [...new Set(skills.map((skill) => skill.category))];
 
   return (
-    <main className={styles.page}>
+    <main id="main-content" tabIndex={-1} className={styles.page}>
       <div className={styles.bentoGrid}>
         {/* Row 1: Hero (3 cols) + Categories (1 col) */}
         <section className={`${styles.card} ${styles.heroCard}`}>
@@ -25,7 +25,7 @@ export default function SkillsPage() {
         </section>
 
         <aside className={`${styles.card} ${styles.categoryCard}`}>
-          <span className={styles.eyebrow} style={{ background: "rgba(255,255,255,0.1)", color: "#fff" }}>
+          <span className={styles.eyebrow}>
             Disciplines
           </span>
           <div className={styles.categoryList}>

@@ -34,7 +34,7 @@ export default function Navbar() {
 
   return (
     <header className={styles.header}>
-      <nav className={styles.nav}>
+      <nav className={styles.nav} aria-label="Primary">
         <Link href="/" className={styles.brand} onClick={handleCloseMenu}>
           <span className={styles.brandDot} />
           <span className={styles.brandCopy}>

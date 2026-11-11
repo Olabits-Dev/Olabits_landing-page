@@ -12,6 +12,9 @@ export default function Footer() {
         </div>
 
         <div className={styles.links}>
+          <Link href={profile.whatsappUrl} target="_blank" rel="noreferrer" className={styles.link}>
+            WhatsApp
+          </Link>
           <Link href={profile.portfolioUrl} target="_blank" rel="noreferrer" className={styles.link}>
             Portfolio
           </Link>

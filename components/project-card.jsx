@@ -12,6 +12,23 @@ function formatDate(date) {
 export default function ProjectCard({ project }) {
   return (
     <article className={styles.card}>
+      {project.image ? (
+        <div
+          className={`${styles.mediaFrame} ${
+            project.previewMode === "mobile" ? styles.mediaFrameMobile : ""
+          }`}
+        >
+          <img
+            src={project.image}
+            alt={`${project.title} preview`}
+            loading="lazy"
+            className={
+              project.previewMode === "mobile" ? styles.mediaMobileImg : styles.mediaCoverImg
+            }
+          />
+        </div>
+      ) : null}
+
       <div className={styles.top}>
         <div className={styles.badges}>
           <span className={styles.category}>{project.category}</span>

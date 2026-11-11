@@ -1,7 +1,22 @@
+import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import Footer from "../components/footer";
 import Navbar from "../components/navbar";
 import { DEFAULT_THEME, THEME_STORAGE_KEY } from "../lib/theme";
+
+const plusJakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  weight: ["500", "600", "700", "800"],
+  variable: "--font-display-loaded",
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-body-loaded",
+  display: "swap",
+});
 
 export const metadata = {
   title: "Samuel Atilola | Senior Full-Stack & Mobile Software Engineer",
@@ -63,8 +78,15 @@ const themeScript = `
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`${plusJakarta.variable} ${inter.variable}`}
+      suppressHydrationWarning
+    >
       <body>
+        <a href="#main-content" className="skip-link">
+          Skip to main content
+        </a>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <Navbar />
         {children}

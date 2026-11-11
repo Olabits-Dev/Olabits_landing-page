@@ -123,6 +123,11 @@
   .bentoGrid {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .sectionHeader,
+  .archiveGrid {
+    grid-column: span 2;
+  }
 }
 
 @media (max-width: 768px) {
