@@ -4,8 +4,9 @@ import { profile } from "../../lib/site-data";
 import styles from "./page.module.css";
 
 export const metadata = {
-  title: "Contact | Samuel Atilola",
-  description: "Contact Samuel Atilola for Software Engineering, SaaS, and automation-focused work.",
+  title: "Contact | Samuel Atilola — Full-Stack & Mobile Engineer",
+  description:
+    "Contact Samuel Atilola for Senior Full-Stack, Mobile (React Native / Expo), AI SaaS, and automation engineering work.",
 };
 
 export default function ContactPage() {
@@ -15,9 +16,10 @@ export default function ContactPage() {
         {/* Row 1 & 2: Hero (2 cols) + Form (2 cols, 3 rows) */}
         <section className={`${styles.card} ${styles.heroCard}`}>
           <span className={styles.eyebrow}>Contact</span>
-          <h1>Let&apos;s talk about software and product work.</h1>
+          <h1>Let&apos;s build full-stack web, mobile, or AI software together.</h1>
           <p className={styles.lead}>
-            Reach out through the form or any of the social links below.
+            Available for full-stack and mobile engineering roles, SaaS builds, and consulting.
+            Reach out via WhatsApp or the links below.
           </p>
         </section>
 
@@ -33,7 +35,7 @@ export default function ContactPage() {
         <article className={`${styles.card} ${styles.focusCard}`}>
           <span className={styles.eyebrow}>Services</span>
           <div className={styles.focusList}>
-            {profile.openTo.slice(0, 5).map((item) => (
+            {profile.openTo.slice(0, 6).map((item) => (
               <span key={item} className={styles.focusTag}>
                 {item}
               </span>

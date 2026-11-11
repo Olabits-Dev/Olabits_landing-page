@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { profile } from "../../../lib/site-data";
 
 function fallbackBio() {
-  return `${profile.name} is a ${profile.role.toLowerCase()} from Nigeria who builds practical software across frontend engineering, SaaS platforms, automation systems, fintech products, and business applications. He focuses on clean interfaces, solid product structure, and software that creates real business value.`;
+  return `${profile.name} is a ${profile.role.toLowerCase()} from Nigeria with 4+ years of experience building production full-stack web applications (Next.js App Router, React, Vue 3, Node.js, PostgreSQL), offline-first mobile apps (React Native, Expo, SQLite, Capacitor Android .aab), multi-tenant AI SaaS platforms (Vercel AI SDK, Google Gemini, Paystack billing), and Python quantitative automation systems.`;
 }
 
 export async function POST() {

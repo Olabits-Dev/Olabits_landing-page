@@ -4,8 +4,8 @@ import { blogPosts } from "../../lib/site-data";
 import styles from "./page.module.css";
 
 export const metadata = {
-  title: "Blog | Samuel Atilola",
-  description: "Frontend, backend, and software development notes from Samuel Atilola.",
+  title: "Blog | Samuel Atilola — Full-Stack & Mobile Engineer",
+  description: "Full-stack, mobile, backend, and software engineering notes from Samuel Atilola.",
 };
 
 function formatDate(date) {
