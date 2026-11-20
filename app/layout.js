@@ -1,6 +1,7 @@
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import FloatingWhatsApp from "../components/floating-whatsapp";
 import "./globals.css";
 import Footer from "../components/footer";
 import Navbar from "../components/navbar";
@@ -93,6 +94,7 @@ export default function RootLayout({ children }) {
         <Navbar />
         {children}
         <Footer />
+        <FloatingWhatsApp />
         <Analytics />
         <SpeedInsights />
       </body>
