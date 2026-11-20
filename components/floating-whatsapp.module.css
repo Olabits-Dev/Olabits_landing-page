@@ -1,0 +1,111 @@
+.floatingContainer {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  animation: slideInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.whatsappButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: #25d366;
+  color: #ffffff;
+  padding: 10px 18px 10px 14px;
+  border-radius: 9999px;
+  text-decoration: none;
+  box-shadow: 0 10px 25px -5px rgba(37, 211, 102, 0.45),
+              0 8px 10px -6px rgba(0, 0, 0, 0.3);
+  position: relative;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.whatsappButton:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 14px 30px -4px rgba(37, 211, 102, 0.6),
+              0 10px 14px -6px rgba(0, 0, 0, 0.35);
+  color: #ffffff;
+}
+
+.whatsappButton:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.icon {
+  flex-shrink: 0;
+  display: block;
+}
+
+.buttonLabel {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.buttonLabel strong {
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+}
+
+.buttonLabel small {
+  font-size: 10.5px;
+  opacity: 0.92;
+  font-weight: 500;
+}
+
+.pulseRing {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 9999px;
+  border: 2px solid #25d366;
+  animation: pulseAnim 2.5s infinite;
+  pointer-events: none;
+}
+
+@keyframes pulseAnim {
+  0% {
+    transform: scale(0.98);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(0.98);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .floatingContainer {
+    bottom: 18px;
+    right: 18px;
+  }
+  .buttonLabel small {
+    display: none;
+  }
+  .buttonLabel strong {
+    font-size: 13px;
+  }
+  .whatsappButton {
+    padding: 10px 16px 10px 12px;
+  }
+}
